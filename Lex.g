@@ -24,6 +24,8 @@ SEMICOLON    : ';' ;
 OPENPAREN    : '(' ;
 CLOSEPAREN   : ')' ;
 
+INTNUM       : ('0'..'9')+ ;
+
 STRING       : '\'' ('\'' '\'' | ~'\'')* '\'';
 
 COMMENT      : '{' (~'}')* '}' {skip();} ;
@@ -31,16 +33,15 @@ COMMENT      : '{' (~'}')* '}' {skip();} ;
 WS           : (' ' | '\t' | '\r' | '\n' )+ {skip();} ;
 
 fragment
-DIGIT        : '0'..'9' ;
-
-INTNUM       : DIGIT+ ;
-
-fragment
 LETTER       : 'a'..'z'
              | 'A'..'Z' ;
 
+fragment
+DIGIT        : '0'..'9' ;
+
 ID           : LETTER (LETTER | DIGIT)* ;
 
-TIMES        : '*' ;
+MULT         : '*' ;
 MINUS        : '-' ;
 PLUS         : '+' ;
+ASSIGN       : ':=' ;

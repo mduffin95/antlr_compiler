@@ -27,7 +27,9 @@ statements :
   ;
 
 statement :
-    WRITE^ OPENPAREN! ( INTNUM | string ) CLOSEPAREN!
+    ID ASSIGN^ exp
+  | skip()
+  | WRITE^ OPENPAREN! ( INTNUM | string ) CLOSEPAREN!
   | WRITELN
   ;
 
@@ -36,3 +38,16 @@ string
     :
     s=STRING { $string::tmp = cleanString($s.text); }-> STRING[$string::tmp]
 ;
+
+exp :
+    term ( ( PLUS | MINUS ) term )*
+    ;
+
+term :
+    factor ( MULT factor )* 
+    ;
+
+factor :
+      ID
+    | 
+    | 
