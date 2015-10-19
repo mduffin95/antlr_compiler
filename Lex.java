@@ -1,4 +1,4 @@
-// $ANTLR 3.2 debian-10 Lex.g 2015-10-18 23:11:06
+// $ANTLR 3.2 debian-10 Lex.g 2015-10-19 20:30:11
 
 import org.antlr.runtime.*;
 import java.util.Stack;
@@ -8,29 +8,34 @@ import java.util.ArrayList;
 public class Lex extends Lexer {
     public static final int CLOSEPAREN=17;
     public static final int WHILE=12;
-    public static final int LETTER=23;
+    public static final int LETTER=22;
     public static final int ELSE=5;
     public static final int DO=4;
     public static final int SEMICOLON=15;
+    public static final int NOT=32;
     public static final int MINUS=26;
+    public static final int MULT=25;
+    public static final int AND=31;
     public static final int ID=24;
     public static final int EOF=-1;
     public static final int TRUE=11;
     public static final int WRITE=13;
     public static final int IF=7;
-    public static final int INTNUM=22;
     public static final int SKIP=9;
-    public static final int WS=20;
+    public static final int INTNUM=18;
+    public static final int WS=21;
     public static final int THEN=10;
     public static final int WRITELN=14;
     public static final int READ=8;
+    public static final int ASSIGN=28;
     public static final int PLUS=27;
-    public static final int DIGIT=21;
+    public static final int DIGIT=23;
+    public static final int EQ=29;
     public static final int OPENPAREN=16;
-    public static final int TIMES=25;
-    public static final int COMMENT=19;
+    public static final int COMMENT=20;
     public static final int FALSE=6;
-    public static final int STRING=18;
+    public static final int STRING=19;
+    public static final int LEQ=30;
 
     // delegates
     // delegators
@@ -336,38 +341,87 @@ public class Lex extends Lexer {
     }
     // $ANTLR end "CLOSEPAREN"
 
-    // $ANTLR start "STRING"
-    public final void mSTRING() throws RecognitionException {
+    // $ANTLR start "INTNUM"
+    public final void mINTNUM() throws RecognitionException {
         try {
-            int _type = STRING;
+            int _type = INTNUM;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // Lex.g:27:14: ( '\\'' ( '\\'' '\\'' | ~ '\\'' )* '\\'' )
-            // Lex.g:27:16: '\\'' ( '\\'' '\\'' | ~ '\\'' )* '\\''
+            // Lex.g:27:14: ( ( '0' .. '9' )+ )
+            // Lex.g:27:16: ( '0' .. '9' )+
             {
-            match('\''); 
-            // Lex.g:27:21: ( '\\'' '\\'' | ~ '\\'' )*
+            // Lex.g:27:16: ( '0' .. '9' )+
+            int cnt1=0;
             loop1:
             do {
-                int alt1=3;
+                int alt1=2;
                 int LA1_0 = input.LA(1);
 
-                if ( (LA1_0=='\'') ) {
-                    int LA1_1 = input.LA(2);
-
-                    if ( (LA1_1=='\'') ) {
-                        alt1=1;
-                    }
-
-
-                }
-                else if ( ((LA1_0>='\u0000' && LA1_0<='&')||(LA1_0>='(' && LA1_0<='\uFFFF')) ) {
-                    alt1=2;
+                if ( ((LA1_0>='0' && LA1_0<='9')) ) {
+                    alt1=1;
                 }
 
 
                 switch (alt1) {
             	case 1 :
-            	    // Lex.g:27:22: '\\'' '\\''
+            	    // Lex.g:27:17: '0' .. '9'
+            	    {
+            	    matchRange('0','9'); 
+
+            	    }
+            	    break;
+
+            	default :
+            	    if ( cnt1 >= 1 ) break loop1;
+                        EarlyExitException eee =
+                            new EarlyExitException(1, input);
+                        throw eee;
+                }
+                cnt1++;
+            } while (true);
+
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        }
+    }
+    // $ANTLR end "INTNUM"
+
+    // $ANTLR start "STRING"
+    public final void mSTRING() throws RecognitionException {
+        try {
+            int _type = STRING;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // Lex.g:29:14: ( '\\'' ( '\\'' '\\'' | ~ '\\'' )* '\\'' )
+            // Lex.g:29:16: '\\'' ( '\\'' '\\'' | ~ '\\'' )* '\\''
+            {
+            match('\''); 
+            // Lex.g:29:21: ( '\\'' '\\'' | ~ '\\'' )*
+            loop2:
+            do {
+                int alt2=3;
+                int LA2_0 = input.LA(1);
+
+                if ( (LA2_0=='\'') ) {
+                    int LA2_1 = input.LA(2);
+
+                    if ( (LA2_1=='\'') ) {
+                        alt2=1;
+                    }
+
+
+                }
+                else if ( ((LA2_0>='\u0000' && LA2_0<='&')||(LA2_0>='(' && LA2_0<='\uFFFF')) ) {
+                    alt2=2;
+                }
+
+
+                switch (alt2) {
+            	case 1 :
+            	    // Lex.g:29:22: '\\'' '\\''
             	    {
             	    match('\''); 
             	    match('\''); 
@@ -375,7 +429,7 @@ public class Lex extends Lexer {
             	    }
             	    break;
             	case 2 :
-            	    // Lex.g:27:34: ~ '\\''
+            	    // Lex.g:29:34: ~ '\\''
             	    {
             	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='&')||(input.LA(1)>='(' && input.LA(1)<='\uFFFF') ) {
             	        input.consume();
@@ -391,7 +445,7 @@ public class Lex extends Lexer {
             	    break;
 
             	default :
-            	    break loop1;
+            	    break loop2;
                 }
             } while (true);
 
@@ -412,24 +466,24 @@ public class Lex extends Lexer {
         try {
             int _type = COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // Lex.g:29:14: ( '{' (~ '}' )* '}' )
-            // Lex.g:29:16: '{' (~ '}' )* '}'
+            // Lex.g:31:14: ( '{' (~ '}' )* '}' )
+            // Lex.g:31:16: '{' (~ '}' )* '}'
             {
             match('{'); 
-            // Lex.g:29:20: (~ '}' )*
-            loop2:
+            // Lex.g:31:20: (~ '}' )*
+            loop3:
             do {
-                int alt2=2;
-                int LA2_0 = input.LA(1);
+                int alt3=2;
+                int LA3_0 = input.LA(1);
 
-                if ( ((LA2_0>='\u0000' && LA2_0<='|')||(LA2_0>='~' && LA2_0<='\uFFFF')) ) {
-                    alt2=1;
+                if ( ((LA3_0>='\u0000' && LA3_0<='|')||(LA3_0>='~' && LA3_0<='\uFFFF')) ) {
+                    alt3=1;
                 }
 
 
-                switch (alt2) {
+                switch (alt3) {
             	case 1 :
-            	    // Lex.g:29:21: ~ '}'
+            	    // Lex.g:31:21: ~ '}'
             	    {
             	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='|')||(input.LA(1)>='~' && input.LA(1)<='\uFFFF') ) {
             	        input.consume();
@@ -445,7 +499,7 @@ public class Lex extends Lexer {
             	    break;
 
             	default :
-            	    break loop2;
+            	    break loop3;
                 }
             } while (true);
 
@@ -467,22 +521,22 @@ public class Lex extends Lexer {
         try {
             int _type = WS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // Lex.g:31:14: ( ( ' ' | '\\t' | '\\r' | '\\n' )+ )
-            // Lex.g:31:16: ( ' ' | '\\t' | '\\r' | '\\n' )+
+            // Lex.g:33:14: ( ( ' ' | '\\t' | '\\r' | '\\n' )+ )
+            // Lex.g:33:16: ( ' ' | '\\t' | '\\r' | '\\n' )+
             {
-            // Lex.g:31:16: ( ' ' | '\\t' | '\\r' | '\\n' )+
-            int cnt3=0;
-            loop3:
+            // Lex.g:33:16: ( ' ' | '\\t' | '\\r' | '\\n' )+
+            int cnt4=0;
+            loop4:
             do {
-                int alt3=2;
-                int LA3_0 = input.LA(1);
+                int alt4=2;
+                int LA4_0 = input.LA(1);
 
-                if ( ((LA3_0>='\t' && LA3_0<='\n')||LA3_0=='\r'||LA3_0==' ') ) {
-                    alt3=1;
+                if ( ((LA4_0>='\t' && LA4_0<='\n')||LA4_0=='\r'||LA4_0==' ') ) {
+                    alt4=1;
                 }
 
 
-                switch (alt3) {
+                switch (alt4) {
             	case 1 :
             	    // Lex.g:
             	    {
@@ -500,12 +554,12 @@ public class Lex extends Lexer {
             	    break;
 
             	default :
-            	    if ( cnt3 >= 1 ) break loop3;
+            	    if ( cnt4 >= 1 ) break loop4;
                         EarlyExitException eee =
-                            new EarlyExitException(3, input);
+                            new EarlyExitException(4, input);
                         throw eee;
                 }
-                cnt3++;
+                cnt4++;
             } while (true);
 
             skip();
@@ -520,77 +574,10 @@ public class Lex extends Lexer {
     }
     // $ANTLR end "WS"
 
-    // $ANTLR start "DIGIT"
-    public final void mDIGIT() throws RecognitionException {
-        try {
-            // Lex.g:34:14: ( '0' .. '9' )
-            // Lex.g:34:16: '0' .. '9'
-            {
-            matchRange('0','9'); 
-
-            }
-
-        }
-        finally {
-        }
-    }
-    // $ANTLR end "DIGIT"
-
-    // $ANTLR start "INTNUM"
-    public final void mINTNUM() throws RecognitionException {
-        try {
-            int _type = INTNUM;
-            int _channel = DEFAULT_TOKEN_CHANNEL;
-            // Lex.g:36:14: ( ( DIGIT )+ )
-            // Lex.g:36:16: ( DIGIT )+
-            {
-            // Lex.g:36:16: ( DIGIT )+
-            int cnt4=0;
-            loop4:
-            do {
-                int alt4=2;
-                int LA4_0 = input.LA(1);
-
-                if ( ((LA4_0>='0' && LA4_0<='9')) ) {
-                    alt4=1;
-                }
-
-
-                switch (alt4) {
-            	case 1 :
-            	    // Lex.g:36:16: DIGIT
-            	    {
-            	    mDIGIT(); 
-
-            	    }
-            	    break;
-
-            	default :
-            	    if ( cnt4 >= 1 ) break loop4;
-                        EarlyExitException eee =
-                            new EarlyExitException(4, input);
-                        throw eee;
-                }
-                cnt4++;
-            } while (true);
-
-
-            }
-
-            state.type = _type;
-            state.channel = _channel;
-        }
-        finally {
-        }
-    }
-    // $ANTLR end "INTNUM"
-
     // $ANTLR start "LETTER"
     public final void mLETTER() throws RecognitionException {
         try {
-            int _type = LETTER;
-            int _channel = DEFAULT_TOKEN_CHANNEL;
-            // Lex.g:38:14: ( 'a' .. 'z' | 'A' .. 'Z' )
+            // Lex.g:36:14: ( 'a' .. 'z' | 'A' .. 'Z' )
             // Lex.g:
             {
             if ( (input.LA(1)>='A' && input.LA(1)<='Z')||(input.LA(1)>='a' && input.LA(1)<='z') ) {
@@ -605,24 +592,38 @@ public class Lex extends Lexer {
 
             }
 
-            state.type = _type;
-            state.channel = _channel;
         }
         finally {
         }
     }
     // $ANTLR end "LETTER"
 
+    // $ANTLR start "DIGIT"
+    public final void mDIGIT() throws RecognitionException {
+        try {
+            // Lex.g:40:14: ( '0' .. '9' )
+            // Lex.g:40:16: '0' .. '9'
+            {
+            matchRange('0','9'); 
+
+            }
+
+        }
+        finally {
+        }
+    }
+    // $ANTLR end "DIGIT"
+
     // $ANTLR start "ID"
     public final void mID() throws RecognitionException {
         try {
             int _type = ID;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // Lex.g:41:14: ( LETTER ( LETTER | DIGIT )* )
-            // Lex.g:41:16: LETTER ( LETTER | DIGIT )*
+            // Lex.g:42:14: ( LETTER ( LETTER | DIGIT )* )
+            // Lex.g:42:16: LETTER ( LETTER | DIGIT )*
             {
             mLETTER(); 
-            // Lex.g:41:23: ( LETTER | DIGIT )*
+            // Lex.g:42:23: ( LETTER | DIGIT )*
             loop5:
             do {
                 int alt5=2;
@@ -666,13 +667,13 @@ public class Lex extends Lexer {
     }
     // $ANTLR end "ID"
 
-    // $ANTLR start "TIMES"
-    public final void mTIMES() throws RecognitionException {
+    // $ANTLR start "MULT"
+    public final void mMULT() throws RecognitionException {
         try {
-            int _type = TIMES;
+            int _type = MULT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // Lex.g:43:14: ( '*' )
-            // Lex.g:43:16: '*'
+            // Lex.g:44:14: ( '*' )
+            // Lex.g:44:16: '*'
             {
             match('*'); 
 
@@ -684,15 +685,15 @@ public class Lex extends Lexer {
         finally {
         }
     }
-    // $ANTLR end "TIMES"
+    // $ANTLR end "MULT"
 
     // $ANTLR start "MINUS"
     public final void mMINUS() throws RecognitionException {
         try {
             int _type = MINUS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // Lex.g:44:14: ( '-' )
-            // Lex.g:44:16: '-'
+            // Lex.g:45:14: ( '-' )
+            // Lex.g:45:16: '-'
             {
             match('-'); 
 
@@ -711,8 +712,8 @@ public class Lex extends Lexer {
         try {
             int _type = PLUS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // Lex.g:45:14: ( '+' )
-            // Lex.g:45:16: '+'
+            // Lex.g:46:14: ( '+' )
+            // Lex.g:46:16: '+'
             {
             match('+'); 
 
@@ -726,9 +727,111 @@ public class Lex extends Lexer {
     }
     // $ANTLR end "PLUS"
 
+    // $ANTLR start "ASSIGN"
+    public final void mASSIGN() throws RecognitionException {
+        try {
+            int _type = ASSIGN;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // Lex.g:47:14: ( ':=' )
+            // Lex.g:47:16: ':='
+            {
+            match(":="); 
+
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        }
+    }
+    // $ANTLR end "ASSIGN"
+
+    // $ANTLR start "EQ"
+    public final void mEQ() throws RecognitionException {
+        try {
+            int _type = EQ;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // Lex.g:48:14: ( '=' )
+            // Lex.g:48:16: '='
+            {
+            match('='); 
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        }
+    }
+    // $ANTLR end "EQ"
+
+    // $ANTLR start "LEQ"
+    public final void mLEQ() throws RecognitionException {
+        try {
+            int _type = LEQ;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // Lex.g:49:10: ( '<=' )
+            // Lex.g:49:12: '<='
+            {
+            match("<="); 
+
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        }
+    }
+    // $ANTLR end "LEQ"
+
+    // $ANTLR start "AND"
+    public final void mAND() throws RecognitionException {
+        try {
+            int _type = AND;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // Lex.g:50:14: ( '&' )
+            // Lex.g:50:16: '&'
+            {
+            match('&'); 
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        }
+    }
+    // $ANTLR end "AND"
+
+    // $ANTLR start "NOT"
+    public final void mNOT() throws RecognitionException {
+        try {
+            int _type = NOT;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // Lex.g:51:14: ( '!' )
+            // Lex.g:51:16: '!'
+            {
+            match('!'); 
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        }
+    }
+    // $ANTLR end "NOT"
+
     public void mTokens() throws RecognitionException {
-        // Lex.g:1:8: ( DO | ELSE | FALSE | IF | READ | SKIP | THEN | TRUE | WHILE | WRITE | WRITELN | SEMICOLON | OPENPAREN | CLOSEPAREN | STRING | COMMENT | WS | INTNUM | LETTER | ID | TIMES | MINUS | PLUS )
-        int alt6=23;
+        // Lex.g:1:8: ( DO | ELSE | FALSE | IF | READ | SKIP | THEN | TRUE | WHILE | WRITE | WRITELN | SEMICOLON | OPENPAREN | CLOSEPAREN | INTNUM | STRING | COMMENT | WS | ID | MULT | MINUS | PLUS | ASSIGN | EQ | LEQ | AND | NOT )
+        int alt6=27;
         alt6 = dfa6.predict(input);
         switch (alt6) {
             case 1 :
@@ -830,65 +933,93 @@ public class Lex extends Lexer {
                 }
                 break;
             case 15 :
-                // Lex.g:1:98: STRING
-                {
-                mSTRING(); 
-
-                }
-                break;
-            case 16 :
-                // Lex.g:1:105: COMMENT
-                {
-                mCOMMENT(); 
-
-                }
-                break;
-            case 17 :
-                // Lex.g:1:113: WS
-                {
-                mWS(); 
-
-                }
-                break;
-            case 18 :
-                // Lex.g:1:116: INTNUM
+                // Lex.g:1:98: INTNUM
                 {
                 mINTNUM(); 
 
                 }
                 break;
-            case 19 :
-                // Lex.g:1:123: LETTER
+            case 16 :
+                // Lex.g:1:105: STRING
                 {
-                mLETTER(); 
+                mSTRING(); 
 
                 }
                 break;
-            case 20 :
-                // Lex.g:1:130: ID
+            case 17 :
+                // Lex.g:1:112: COMMENT
+                {
+                mCOMMENT(); 
+
+                }
+                break;
+            case 18 :
+                // Lex.g:1:120: WS
+                {
+                mWS(); 
+
+                }
+                break;
+            case 19 :
+                // Lex.g:1:123: ID
                 {
                 mID(); 
 
                 }
                 break;
-            case 21 :
-                // Lex.g:1:133: TIMES
+            case 20 :
+                // Lex.g:1:126: MULT
                 {
-                mTIMES(); 
+                mMULT(); 
 
                 }
                 break;
-            case 22 :
-                // Lex.g:1:139: MINUS
+            case 21 :
+                // Lex.g:1:131: MINUS
                 {
                 mMINUS(); 
 
                 }
                 break;
-            case 23 :
-                // Lex.g:1:145: PLUS
+            case 22 :
+                // Lex.g:1:137: PLUS
                 {
                 mPLUS(); 
+
+                }
+                break;
+            case 23 :
+                // Lex.g:1:142: ASSIGN
+                {
+                mASSIGN(); 
+
+                }
+                break;
+            case 24 :
+                // Lex.g:1:149: EQ
+                {
+                mEQ(); 
+
+                }
+                break;
+            case 25 :
+                // Lex.g:1:152: LEQ
+                {
+                mLEQ(); 
+
+                }
+                break;
+            case 26 :
+                // Lex.g:1:156: AND
+                {
+                mAND(); 
+
+                }
+                break;
+            case 27 :
+                // Lex.g:1:160: NOT
+                {
+                mNOT(); 
 
                 }
                 break;
@@ -900,40 +1031,42 @@ public class Lex extends Lexer {
 
     protected DFA6 dfa6 = new DFA6(this);
     static final String DFA6_eotS =
-        "\1\uffff\10\25\7\uffff\1\25\3\uffff\1\40\2\uffff\2\26\1\43\6\26"+
-        "\1\uffff\2\26\1\uffff\6\26\1\62\1\26\1\64\1\65\1\66\1\67\2\26\1"+
-        "\uffff\1\72\4\uffff\1\73\1\75\2\uffff\1\26\1\uffff\1\77\1\uffff";
+        "\1\uffff\10\20\20\uffff\1\43\2\20\1\46\6\20\1\uffff\2\20\1\uffff"+
+        "\6\20\1\65\1\20\1\67\1\70\1\71\1\72\2\20\1\uffff\1\75\4\uffff\1"+
+        "\76\1\100\2\uffff\1\20\1\uffff\1\102\1\uffff";
     static final String DFA6_eofS =
-        "\100\uffff";
+        "\103\uffff";
     static final String DFA6_minS =
-        "\1\11\10\60\7\uffff\1\60\3\uffff\1\60\2\uffff\1\163\1\154\1\60\1"+
-        "\141\1\151\1\145\1\165\2\151\1\uffff\1\145\1\163\1\uffff\1\144\1"+
-        "\160\1\156\1\145\1\154\1\164\1\60\1\145\4\60\2\145\1\uffff\1\60"+
-        "\4\uffff\2\60\2\uffff\1\156\1\uffff\1\60\1\uffff";
+        "\1\11\1\157\1\154\1\141\1\146\1\145\1\153\2\150\20\uffff\1\60\1"+
+        "\163\1\154\1\60\1\141\1\151\1\145\1\165\2\151\1\uffff\1\145\1\163"+
+        "\1\uffff\1\144\1\160\1\156\1\145\1\154\1\164\1\60\1\145\4\60\2\145"+
+        "\1\uffff\1\60\4\uffff\2\60\2\uffff\1\156\1\uffff\1\60\1\uffff";
     static final String DFA6_maxS =
-        "\1\173\10\172\7\uffff\1\172\3\uffff\1\172\2\uffff\1\163\1\154\1"+
-        "\172\1\141\1\151\1\145\1\165\2\151\1\uffff\1\145\1\163\1\uffff\1"+
-        "\144\1\160\1\156\1\145\1\154\1\164\1\172\1\145\4\172\2\145\1\uffff"+
-        "\1\172\4\uffff\2\172\2\uffff\1\156\1\uffff\1\172\1\uffff";
+        "\1\173\1\157\1\154\1\141\1\146\1\145\1\153\2\162\20\uffff\1\172"+
+        "\1\163\1\154\1\172\1\141\1\151\1\145\1\165\2\151\1\uffff\1\145\1"+
+        "\163\1\uffff\1\144\1\160\1\156\1\145\1\154\1\164\1\172\1\145\4\172"+
+        "\2\145\1\uffff\1\172\4\uffff\2\172\2\uffff\1\156\1\uffff\1\172\1"+
+        "\uffff";
     static final String DFA6_acceptS =
-        "\11\uffff\1\14\1\15\1\16\1\17\1\20\1\21\1\22\1\uffff\1\25\1\26\1"+
-        "\27\1\uffff\1\23\1\24\11\uffff\1\1\2\uffff\1\4\16\uffff\1\2\1\uffff"+
-        "\1\5\1\6\1\7\1\10\2\uffff\1\3\1\11\1\uffff\1\12\1\uffff\1\13";
+        "\11\uffff\1\14\1\15\1\16\1\17\1\20\1\21\1\22\1\23\1\24\1\25\1\26"+
+        "\1\27\1\30\1\31\1\32\1\33\12\uffff\1\1\2\uffff\1\4\16\uffff\1\2"+
+        "\1\uffff\1\5\1\6\1\7\1\10\2\uffff\1\3\1\11\1\uffff\1\12\1\uffff"+
+        "\1\13";
     static final String DFA6_specialS =
-        "\100\uffff}>";
+        "\103\uffff}>";
     static final String[] DFA6_transitionS = {
-            "\2\16\2\uffff\1\16\22\uffff\1\16\6\uffff\1\14\1\12\1\13\1\21"+
-            "\1\23\1\uffff\1\22\2\uffff\12\17\1\uffff\1\11\5\uffff\32\20"+
-            "\6\uffff\3\20\1\1\1\2\1\3\2\20\1\4\10\20\1\5\1\6\1\7\2\20\1"+
-            "\10\3\20\1\15",
-            "\12\26\7\uffff\32\26\6\uffff\16\26\1\24\13\26",
-            "\12\26\7\uffff\32\26\6\uffff\13\26\1\27\16\26",
-            "\12\26\7\uffff\32\26\6\uffff\1\30\31\26",
-            "\12\26\7\uffff\32\26\6\uffff\5\26\1\31\24\26",
-            "\12\26\7\uffff\32\26\6\uffff\4\26\1\32\25\26",
-            "\12\26\7\uffff\32\26\6\uffff\12\26\1\33\17\26",
-            "\12\26\7\uffff\32\26\6\uffff\7\26\1\34\11\26\1\35\10\26",
-            "\12\26\7\uffff\32\26\6\uffff\7\26\1\36\11\26\1\37\10\26",
+            "\2\17\2\uffff\1\17\22\uffff\1\17\1\30\4\uffff\1\27\1\15\1\12"+
+            "\1\13\1\21\1\23\1\uffff\1\22\2\uffff\12\14\1\24\1\11\1\26\1"+
+            "\25\3\uffff\32\20\6\uffff\3\20\1\1\1\2\1\3\2\20\1\4\10\20\1"+
+            "\5\1\6\1\7\2\20\1\10\3\20\1\16",
+            "\1\31",
+            "\1\32",
+            "\1\33",
+            "\1\34",
+            "\1\35",
+            "\1\36",
+            "\1\37\11\uffff\1\40",
+            "\1\41\11\uffff\1\42",
             "",
             "",
             "",
@@ -941,53 +1074,56 @@ public class Lex extends Lexer {
             "",
             "",
             "",
-            "\12\26\7\uffff\32\26\6\uffff\32\26",
             "",
             "",
             "",
-            "\12\26\7\uffff\32\26\6\uffff\32\26",
             "",
             "",
-            "\1\41",
-            "\1\42",
-            "\12\26\7\uffff\32\26\6\uffff\32\26",
+            "",
+            "",
+            "",
+            "",
+            "\12\20\7\uffff\32\20\6\uffff\32\20",
             "\1\44",
             "\1\45",
-            "\1\46",
+            "\12\20\7\uffff\32\20\6\uffff\32\20",
             "\1\47",
             "\1\50",
             "\1\51",
-            "",
             "\1\52",
             "\1\53",
-            "",
             "\1\54",
+            "",
             "\1\55",
             "\1\56",
+            "",
             "\1\57",
             "\1\60",
             "\1\61",
-            "\12\26\7\uffff\32\26\6\uffff\32\26",
+            "\1\62",
             "\1\63",
-            "\12\26\7\uffff\32\26\6\uffff\32\26",
-            "\12\26\7\uffff\32\26\6\uffff\32\26",
-            "\12\26\7\uffff\32\26\6\uffff\32\26",
-            "\12\26\7\uffff\32\26\6\uffff\32\26",
-            "\1\70",
-            "\1\71",
+            "\1\64",
+            "\12\20\7\uffff\32\20\6\uffff\32\20",
+            "\1\66",
+            "\12\20\7\uffff\32\20\6\uffff\32\20",
+            "\12\20\7\uffff\32\20\6\uffff\32\20",
+            "\12\20\7\uffff\32\20\6\uffff\32\20",
+            "\12\20\7\uffff\32\20\6\uffff\32\20",
+            "\1\73",
+            "\1\74",
             "",
-            "\12\26\7\uffff\32\26\6\uffff\32\26",
-            "",
-            "",
-            "",
-            "",
-            "\12\26\7\uffff\32\26\6\uffff\32\26",
-            "\12\26\7\uffff\32\26\6\uffff\13\26\1\74\16\26",
+            "\12\20\7\uffff\32\20\6\uffff\32\20",
             "",
             "",
-            "\1\76",
             "",
-            "\12\26\7\uffff\32\26\6\uffff\32\26",
+            "",
+            "\12\20\7\uffff\32\20\6\uffff\32\20",
+            "\12\20\7\uffff\32\20\6\uffff\13\20\1\77\16\20",
+            "",
+            "",
+            "\1\101",
+            "",
+            "\12\20\7\uffff\32\20\6\uffff\32\20",
             ""
     };
 
@@ -1021,7 +1157,7 @@ public class Lex extends Lexer {
             this.transition = DFA6_transition;
         }
         public String getDescription() {
-            return "1:1: Tokens : ( DO | ELSE | FALSE | IF | READ | SKIP | THEN | TRUE | WHILE | WRITE | WRITELN | SEMICOLON | OPENPAREN | CLOSEPAREN | STRING | COMMENT | WS | INTNUM | LETTER | ID | TIMES | MINUS | PLUS );";
+            return "1:1: Tokens : ( DO | ELSE | FALSE | IF | READ | SKIP | THEN | TRUE | WHILE | WRITE | WRITELN | SEMICOLON | OPENPAREN | CLOSEPAREN | INTNUM | STRING | COMMENT | WS | ID | MULT | MINUS | PLUS | ASSIGN | EQ | LEQ | AND | NOT );";
         }
     }
  

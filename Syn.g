@@ -19,19 +19,23 @@ options {
 }
 
 program :
-    statements
-  ;
+      statements
+    ;
 
 statements :
-    statement ( SEMICOLON^ statement )*
-  ;
+      statement ( SEMICOLON^ statement )*
+    ;
 
 statement :
-    ID ASSIGN^ exp
-  | skip()
-  | WRITE^ OPENPAREN! ( INTNUM | string ) CLOSEPAREN!
-  | WRITELN
-  ;
+      ID ASSIGN^ exp
+    | SKIP
+    | READ^ OPENPAREN! ID CLOSEPAREN!
+    | IF boolexp THEN statement ELSE statement
+    | WHILE boolexp DO statement
+    | WRITE^ OPENPAREN! ( exp | string ) CLOSEPAREN!
+    | WRITELN
+    | OPENPAREN! statements CLOSEPAREN!
+    ;
 
 string
     scope { String tmp; }
@@ -49,5 +53,23 @@ term :
 
 factor :
       ID
-    | 
-    | 
+    | INTNUM
+    | OPENPAREN! exp CLOSEPAREN!
+    ; 
+
+boolexp :
+      boolterm ( AND boolterm )*
+    ;
+
+boolterm :
+      NOT boolean
+    | boolean
+    ;    
+    
+boolean :
+      TRUE
+    | FALSE
+    | exp ( EQ | LEQ ) exp
+    | OPENPAREN! boolexp CLOSEPAREN!
+    ;
+    

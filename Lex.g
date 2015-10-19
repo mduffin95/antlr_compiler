@@ -45,3 +45,7 @@ MULT         : '*' ;
 MINUS        : '-' ;
 PLUS         : '+' ;
 ASSIGN       : ':=' ;
+EQ           : '=' ;
+LEQ	     : '<=' ;
+AND          : '&' ;
+NOT          : '!' ;

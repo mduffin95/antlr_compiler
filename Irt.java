@@ -13,31 +13,36 @@ public class Irt
 //
 // CAMLE TOKENS BEGIN
   public static final String[] tokenNames = new String[] {
-"NONE", "NONE", "NONE", "NONE", "DO", "ELSE", "FALSE", "IF", "READ", "SKIP", "THEN", "TRUE", "WHILE", "WRITE", "WRITELN", "SEMICOLON", "OPENPAREN", "CLOSEPAREN", "STRING", "COMMENT", "WS", "DIGIT", "INTNUM", "LETTER", "ID", "TIMES", "MINUS", "PLUS"};
+"NONE", "NONE", "NONE", "NONE", "DO", "ELSE", "FALSE", "IF", "READ", "SKIP", "THEN", "TRUE", "WHILE", "WRITE", "WRITELN", "SEMICOLON", "OPENPAREN", "CLOSEPAREN", "INTNUM", "STRING", "COMMENT", "WS", "LETTER", "DIGIT", "ID", "MULT", "MINUS", "PLUS", "ASSIGN", "EQ", "LEQ", "AND", "NOT"};
   public static final int CLOSEPAREN=17;
   public static final int WHILE=12;
-  public static final int LETTER=23;
+  public static final int LETTER=22;
   public static final int ELSE=5;
   public static final int DO=4;
   public static final int SEMICOLON=15;
+  public static final int NOT=32;
   public static final int MINUS=26;
+  public static final int MULT=25;
+  public static final int AND=31;
   public static final int ID=24;
   public static final int TRUE=11;
   public static final int WRITE=13;
   public static final int IF=7;
-  public static final int INTNUM=22;
+  public static final int INTNUM=18;
   public static final int SKIP=9;
-  public static final int WS=20;
+  public static final int WS=21;
   public static final int THEN=10;
   public static final int WRITELN=14;
   public static final int READ=8;
+  public static final int ASSIGN=28;
   public static final int PLUS=27;
-  public static final int DIGIT=21;
+  public static final int DIGIT=23;
   public static final int OPENPAREN=16;
-  public static final int COMMENT=19;
-  public static final int TIMES=25;
+  public static final int EQ=29;
+  public static final int COMMENT=20;
   public static final int FALSE=6;
-  public static final int STRING=18;
+  public static final int STRING=19;
+  public static final int LEQ=30;
 // CAMLE TOKENS END
 
   public static IRTree convert(CommonTree ast)
