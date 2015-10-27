@@ -5,6 +5,7 @@ parser grammar Syn;
 options {
   tokenVocab = Lex;
   output = AST;
+  backtrack = true;
 }
 
 @members
