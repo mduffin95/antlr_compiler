@@ -5,7 +5,6 @@ parser grammar Syn;
 options {
   tokenVocab = Lex;
   output = AST;
-  backtrack = true;
 }
 
 @members
@@ -30,10 +29,11 @@ statements :
 statement :
       ID ASSIGN^ exp
     | SKIP
+    | IF^ boolexp THEN! statement ELSE! statement
+    | WHILE^ boolexp DO! statement
     | READ^ OPENPAREN! ID CLOSEPAREN!
-    | IF boolexp THEN statement ELSE statement
-    | WHILE boolexp DO statement
-    | WRITE^ OPENPAREN! ( exp | string ) CLOSEPAREN!
+    | ( WRITE OPENPAREN exp ) => WRITE^ OPENPAREN! exp CLOSEPAREN!
+    | WRITE^ OPENPAREN! ( boolexp | string ) CLOSEPAREN!
     | WRITELN
     | OPENPAREN! statements CLOSEPAREN!
     ;
@@ -42,35 +42,34 @@ string
     scope { String tmp; }
     :
     s=STRING { $string::tmp = cleanString($s.text); }-> STRING[$string::tmp]
-;
+    ;
+
+boolexp :
+      boolterm ( AND^ boolterm )*
+    ;
+
+boolterm :
+      NOT^ bool
+    | bool
+    ;    
+
+bool :
+      TRUE
+    | FALSE
+    | ( exp ( EQ | LEQ ) ) => exp ( EQ | LEQ )^ exp
+    | OPENPAREN! boolexp CLOSEPAREN!
+    ;
 
 exp :
-    term ( ( PLUS | MINUS ) term )*
+    term ( ( PLUS | MINUS )^ term )*
     ;
 
 term :
-    factor ( MULT factor )* 
+    factor ( MULT^ factor )* 
     ;
 
 factor :
       ID
     | INTNUM
     | OPENPAREN! exp CLOSEPAREN!
-    ; 
-
-boolexp :
-      boolterm ( AND boolterm )*
     ;
-
-boolterm :
-      NOT boolean
-    | boolean
-    ;    
-    
-boolean :
-      TRUE
-    | FALSE
-    | exp ( EQ | LEQ ) exp
-    | OPENPAREN! boolexp CLOSEPAREN!
-    ;
-    

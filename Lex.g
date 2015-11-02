@@ -2,6 +2,11 @@
 
 lexer grammar Lex;
 
+@members
+{
+    int charCount = 0;
+}
+
 //---------------------------------------------------------------------------
 // KEYWORDS
 //---------------------------------------------------------------------------
@@ -39,7 +44,7 @@ LETTER       : 'a'..'z'
 fragment
 DIGIT        : '0'..'9' ;
 
-ID           : LETTER (LETTER | DIGIT)* ;
+ID           : LETTER (LETTER | DIGIT)*;
 
 MULT         : '*' ;
 MINUS        : '-' ;
