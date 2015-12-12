@@ -51,6 +51,6 @@ MINUS        : '-' ;
 PLUS         : '+' ;
 ASSIGN       : ':=' ;
 EQ           : '=' ;
-LEQ	     : '<=' ;
+LEQ	         : '<=' ;
 AND          : '&' ;
 NOT          : '!' ;
