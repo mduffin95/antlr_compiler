@@ -30,9 +30,16 @@ public class Cg
       String e = expression(irt.getSub(0), o);
       emit(o, "WR "+e);
     }
-    else if (irt.getOp().equals("ASSN")) {
-      //System.out.println("working");
-      System.out.println("Sub L: "+irt.getSub(0)+" Sub R: "+irt.getSub(1));
+    else if (irt.getOp().equals("MOVE")) {
+    	String loc = irt.getSub(0).getSub(0).getSub(0).getOp();
+    	String reg = expression(irt.getSub(1), o);
+    	emit(o, "STORE "+reg+",R0,"+loc);
+    }
+    else if (irt.getOp().equals("READ")) {
+    	String loc = irt.getSub(0).getSub(0).getSub(0).getOp();
+    	String reg = Memory.getRegister();
+    	emit(o, "RD "+reg);
+    	emit(o, "STORE "+reg+",R0,"+loc);
     }
     else {
       error(irt.getOp());
@@ -42,13 +49,37 @@ public class Cg
   private static String expression(IRTree irt, PrintStream o)
   {
     String result = "";
+    System.out.println(irt.getOp());
     if (irt.getOp().equals("CONST")) {
-      String t = irt.getSub(0).getOp();
-      result = "R1";
-      emit(o, "ADDI "+result+",R0,"+t);
+	    String t = irt.getSub(0).getOp();
+	    result = Memory.getRegister();
+	    emit(o, "ADDI "+result+",R0,"+t);
+    }
+    else if (irt.getOp().equals("MEM")) {
+    	String t = irt.getSub(0).getSub(0).getOp();
+        result = Memory.getRegister();
+        emit(o, "LOAD "+result+",R0,"+t);
+    }
+    else if (irt.getOp().equals("BINOP")) {
+    	String t = irt.getSub(0).getOp();
+    	String Ra, Rb;
+    	Ra = expression(irt.getSub(1), o);
+    	Rb = expression(irt.getSub(2), o);
+    	String op;
+    	if (t.equals("+")) {
+    		op = "ADD ";
+    	} 
+    	else if (t.equals("-")) {
+    		op = "SUB ";
+    	}
+    	else {
+    		op = "MUL ";
+    	}
+        result = Memory.getRegister();
+        emit(o, op+result+","+Ra+","+Rb);
     }
     else {
-      error(irt.getOp());
+        error(irt.getOp());
     }
     return result;
   }

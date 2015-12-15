@@ -1,12 +1,16 @@
 // COMS22201: Memory allocation for strings
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.io.*;
 
 public class Memory {
 
   static ArrayList<Byte> memory = new ArrayList<Byte>();
-
+  static HashMap<String, Integer> variables = new HashMap<String, Integer>();
+  static int registers = 1;
+  
   static public int allocateString(String text)
   {
     int addr = memory.size();
@@ -18,6 +22,30 @@ public class Memory {
     return addr;
   }
 
+  static public int allocateVar(String text) {
+	  int result;
+	  if(variables.containsKey(text)) {
+		  result = variables.get(text);
+	  }
+	  else {
+		  while (memory.size()%4 != 0) {
+			  memory.add(new Byte("",0));
+		  }
+		  result = memory.size();
+		  variables.put(text, result);
+		  for (int i=0; i<4; i++)
+			  memory.add(new Byte(text, 0));
+		  
+	  }
+	  return result;
+  }
+  
+  static public String getRegister() {
+	  String result = "R"+registers;
+	  registers++;
+	  return result;
+  }
+  
   static public void dumpData(PrintStream o)
   {
     Byte b;

@@ -84,40 +84,46 @@ public class Irt
     IRTree irt1 = new IRTree(), irt2 = new IRTree(), irt3 = new IRTree();
     Token t = ast.getToken();
     int tt = t.getType();
-    if (tt == WRITE) {
-      ast1 = (CommonTree)ast.getChild(0);
-      String type = arg(ast1, irt1);
-      if (type.equals("int")) {
-        irt.setOp("WR");
-        irt.addSub(irt1);
-      }
-      else {
+    switch (tt) {
+    case WRITE:
+    	ast1 = (CommonTree)ast.getChild(0);
+        String type = arg(ast1, irt1);
+        if (type.equals("int")) {
+            irt.setOp("WR");
+            irt.addSub(irt1);
+        }
+        else {
+            irt.setOp("WRS");
+            irt.addSub(irt1);
+        }
+    	break;
+    case WRITELN:
+    	String a = String.valueOf(Memory.allocateString("\n"));
         irt.setOp("WRS");
+        irt.addSub(new IRTree("MEM", new IRTree("CONST", new IRTree(a))));
+    	break;
+    case ASSIGN:
+    	irt.setOp("MOVE");
+
+        //VARIABLE
+        expression((CommonTree)ast.getChild(0), irt1);
+
+        //VALUE
+        arg((CommonTree)ast.getChild(1), irt2);
         irt.addSub(irt1);
-      }
-    }
-    else if (tt == WRITELN) {
-      String a = String.valueOf(Memory.allocateString("\n"));
-      irt.setOp("WRS");
-      irt.addSub(new IRTree("MEM", new IRTree("CONST", new IRTree(a))));
-    }
-    else if (tt == ASSIGN) {
-      irt.setOp("ASSN");
-
-      //VARIABLE
-      ast1 = (CommonTree)ast.getChild(0);
-      Token id_token = ast1.getToken();
-      String id_text = id_token.getText();
-      String a = String.valueOf(Memory.allocateString(id_text));
-      irt.addSub(new IRTree("MEM", new IRTree(a)));
-
-      //VALUE
-      ast2 = (CommonTree)ast.getChild(1);
-      String type = arg(ast2, irt1);
-      irt.addSub(irt1);
-    }
-    else {
-      error(tt);
+        irt.addSub(irt2);
+    	break;
+    case READ:
+    	irt.setOp("READ");
+    	expression((CommonTree)ast.getChild(0), irt1);
+    	irt.addSub(irt1);
+    	break;
+    case IF:
+    	irt.setOp("CJUMP");
+    	break;
+    default:
+    	error(tt);
+		break;
     }
   }
 
@@ -133,9 +139,6 @@ public class Irt
       irt.addSub(new IRTree("CONST", new IRTree(st)));
       return "string";
     }
-    // if (tt == ID) {
-    //   //Not sure what to do here
-    // }
     else {
       expression(ast, irt);
       return "int";
@@ -145,13 +148,31 @@ public class Irt
   public static void expression(CommonTree ast, IRTree irt)
   {
     CommonTree ast1;
-    IRTree irt1 = new IRTree();
+    IRTree irt1 = new IRTree(), irt2 = new IRTree();
     Token t = ast.getToken();
     int tt = t.getType();
-    if (tt == INTNUM) {
-      constant(ast, irt1);
-      irt.setOp("CONST");
-      irt.addSub(irt1);
+    switch (tt) {
+    case INTNUM:
+    	constant(ast, irt1);
+    	irt.setOp("CONST");
+    	irt.addSub(irt1);
+    	break;
+    case ID:
+    	irt.setOp("MEM");
+    	irt.addSub(new IRTree("CONST", new IRTree(Integer.toString(Memory.allocateVar(t.getText())))));
+    	break;
+    case MULT:
+    case PLUS:
+    case MINUS:
+    	irt.setOp("BINOP");
+    	expression((CommonTree)ast.getChild(0), irt1);
+    	expression((CommonTree)ast.getChild(1), irt2);
+    	if (tt == MULT) irt.addSub(new IRTree("*"));
+    	else if (tt == PLUS) irt.addSub(new IRTree("+"));
+    	else irt.addSub(new IRTree("-"));
+    	irt.addSub(irt1);
+    	irt.addSub(irt2);
+    	break;
     }
   }
 
