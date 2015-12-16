@@ -41,6 +41,34 @@ public class Cg
     	emit(o, "RD "+reg);
     	emit(o, "STORE "+reg+",R0,"+loc);
     }
+    else if (irt.getOp().equals("CJUMP")) {
+    	String op = irt.getSub(0).getOp();
+//    	String thenLabel = irt.getSub(3).getOp();
+    	String elseLabel = irt.getSub(4).getOp();
+    	String left = expression(irt.getSub(1), o);
+    	String right = expression(irt.getSub(2), o);
+    	String reg = Memory.getRegister();
+    	
+    	if (op.equals("<=")) {
+    		emit(o, "SUB "+reg+","+right+","+left);
+    		emit(o, "BLTZ "+reg+","+elseLabel);
+    	}
+    	else if (op.equals("=")) {
+    		emit(o, "SUB "+reg+","+left+","+right);
+    		emit(o, "BNEZ "+reg+","+elseLabel);
+    	}
+    }
+    else if (irt.getOp().equals("JUMP")) {
+    	String lbl = irt.getSub(0).getSub(0).getOp();
+    	emit(o, "JMP "+lbl);
+    }
+    else if (irt.getOp().equals("LABEL")) {
+    	String lbl = irt.getSub(0).getOp();
+    	emit(o, lbl + ":");
+    }
+    else if (irt.getOp().equals("SKIP")) {
+    	emit(o, "NOP");
+    }
     else {
       error(irt.getOp());
     }

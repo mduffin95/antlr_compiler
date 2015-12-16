@@ -44,6 +44,12 @@ public class Irt
   public static final int STRING=19;
   public static final int LEQ=30;
 // CAMLE TOKENS END
+  
+  static int lcount = 0;
+  
+  public static String getLabel() {
+	  return "n" + lcount++;
+  }
 
   public static IRTree convert(CommonTree ast)
   {
@@ -77,7 +83,7 @@ public class Irt
       statement(ast, irt);
     }
   }
-
+  
   public static void statement(CommonTree ast, IRTree irt)
   {
     CommonTree ast1, ast2, ast3;
@@ -119,7 +125,86 @@ public class Irt
     	irt.addSub(irt1);
     	break;
     case IF:
-    	irt.setOp("CJUMP");
+    	irt.setOp("SEQ");
+    	irt1.setOp("CJUMP");
+    	String op = ast.getChild(0).getText();
+    	irt1.addSub(new IRTree(op));
+    	expression((CommonTree)ast.getChild(0).getChild(0), irt2); //Const 1
+    	expression((CommonTree)ast.getChild(0).getChild(1), irt3); //Const 2
+    	irt1.addSub(irt2);
+    	irt1.addSub(irt3);
+    	String thenLabel = Irt.getLabel();
+    	String elseLabel = Irt.getLabel();
+    	String endLabel = Irt.getLabel();
+    	irt1.addSub(new IRTree(thenLabel));
+    	irt1.addSub(new IRTree(elseLabel));
+    	irt.addSub(irt1); //CJUMP
+    	IRTree irt4 = new IRTree(), irt5 = new IRTree();
+    	statements((CommonTree)ast.getChild(1), irt4); //Then
+    	statements((CommonTree)ast.getChild(2), irt5); //Else
+    	irt.addSub(new IRTree("SEQ", 
+    			new IRTree("LABEL", 
+    					new IRTree(thenLabel)
+    			), 
+    			new IRTree("SEQ", 
+    					irt4, 
+    					new IRTree("SEQ", 
+    							new IRTree("JUMP", 
+    									new IRTree("NAME", 
+    											new IRTree(endLabel)
+    									)
+    							),
+    							new IRTree("SEQ", 
+    									new IRTree("LABEL", 
+    											new IRTree(elseLabel) 
+    											
+    									),
+    									new IRTree("SEQ", 
+												irt5, 
+												new IRTree("LABEL", 
+														new IRTree(endLabel)
+												)
+										)
+    							)
+    					)
+    			)
+    	));
+    	
+    	break;
+    case WHILE:
+    	irt.setOp("SEQ");
+    	op = ast.getChild(0).getText();
+    	String beginLabel = Irt.getLabel();
+    	thenLabel = Irt.getLabel();
+    	endLabel = Irt.getLabel();
+    	statements((CommonTree)ast.getChild(1), irt1);  //While contents
+    	expression((CommonTree)ast.getChild(0).getChild(0), irt2); //Const 1
+    	expression((CommonTree)ast.getChild(0).getChild(1), irt3); //Const 2
+    	IRTree cj = new IRTree("CJUMP", new IRTree(op), irt2, irt3);
+    	cj.addSub(new IRTree(thenLabel));
+    	cj.addSub(new IRTree(endLabel));
+    	irt.addSub(new IRTree("LABEL", new IRTree(beginLabel))); 
+    	irt.addSub(new IRTree("SEQ",
+    			cj,
+    			new IRTree("SEQ", 
+    					new IRTree("LABEL", new IRTree(thenLabel)),
+    					new IRTree("SEQ", 
+    							irt1,
+    							new IRTree("SEQ", 
+    									new IRTree("JUMP", 
+    											new IRTree("NAME", 
+    													new IRTree(beginLabel)
+    											)
+    									),
+    									new IRTree("LABEL", new IRTree(endLabel))
+    							)
+    					)
+    			)
+    	));
+    					
+    	break;
+    case SKIP:
+    	irt.setOp("SKIP");
     	break;
     default:
     	error(tt);
@@ -127,6 +212,23 @@ public class Irt
     }
   }
 
+  public static void translate(CommonTree ast, IRTree irt, String n1, String n2) {
+	  Token t = ast.getToken();
+	  int tt = t.getType();
+	  if(tt == AND) {
+		  System.out.println("AND");
+	  }
+	  if(tt == NOT) {
+		  System.out.println("NOT");
+	  }
+	  if(tt == TRUE) {
+		  System.out.println("TRUE");
+	  }
+	  if(tt == FALSE) {
+		  System.out.println("FALSE");
+	  }
+  }
+  
   public static String arg(CommonTree ast, IRTree irt)
   {
     Token t = ast.getToken();
