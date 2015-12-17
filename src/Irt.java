@@ -104,10 +104,10 @@ public class Irt {
 				IRTree trans = translate((CommonTree) ast.getChild(0), thenLabel, elseLabel);
 
 				String trst = String.valueOf(true_loc);
-				irt1.setOp("WR");
+				irt1.setOp("WRS");
 				irt1.addSub(new IRTree("MEM", new IRTree("CONST", new IRTree(trst))));
 				String flst = String.valueOf(false_loc);
-				irt2.setOp("WR");
+				irt2.setOp("WRS");
 				irt2.addSub(new IRTree("MEM", new IRTree("CONST", new IRTree(flst))));
 				ifthenelse(irt, trans, irt1, irt2, thenLabel, elseLabel);
 				break;
@@ -148,15 +148,16 @@ public class Irt {
 			ifthenelse(irt, trans, irt1, irt2, thenLabel, elseLabel);
 			break;
 		case WHILE:
+			
 			irt.setOp("SEQ");
 			String beginLabel = Irt.getLabel();
 			thenLabel = Irt.getLabel();
 			String endLabel = Irt.getLabel();
 			statements((CommonTree) ast.getChild(1), irt1); // While contents
-			translate((CommonTree) ast.getChild(0), thenLabel, endLabel);
-			IRTree cj = cjump((CommonTree) ast.getChild(0), thenLabel, endLabel);
+			trans = translate((CommonTree) ast.getChild(0), thenLabel, endLabel);
+//			IRTree cj = cjump((CommonTree) ast.getChild(0), thenLabel, endLabel);
 			irt.addSub(new IRTree("LABEL", new IRTree(beginLabel)));
-			irt.addSub(new IRTree("SEQ", cj, new IRTree("SEQ", new IRTree(
+			irt.addSub(new IRTree("SEQ", trans, new IRTree("SEQ", new IRTree(
 					"LABEL", new IRTree(thenLabel)), new IRTree("SEQ", irt1,
 					new IRTree("SEQ", new IRTree("JUMP", new IRTree("NAME",
 							new IRTree(beginLabel))), new IRTree("LABEL",
@@ -213,8 +214,9 @@ public class Irt {
 			irt1 = translate((CommonTree) ast.getChild(0), next, n2);
 			irt2 = translate((CommonTree) ast.getChild(1), n1, n2);
 			result = new IRTree("SEQ", irt1, new IRTree("SEQ", new IRTree(
-					"LABEL", new IRTree(next)), new IRTree("SEQ", irt2,
-					new IRTree("LABEL", new IRTree(n2)))));
+					"LABEL", new IRTree(next)), irt2));
+					/*new IRTree("SEQ", irt2,
+					new IRTree("LABEL", new IRTree(n2)))));*/
 			// System.out.println("AND");
 		} else if (tt == NOT) {
 			result = translate((CommonTree) ast.getChild(0), n2, n1);

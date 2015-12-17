@@ -43,7 +43,7 @@ public class Cg
     }
     else if (irt.getOp().equals("CJUMP")) {
     	String op = irt.getSub(0).getOp();
-//    	String thenLabel = irt.getSub(3).getOp();
+    	String thenLabel = irt.getSub(3).getOp();
     	String elseLabel = irt.getSub(4).getOp();
     	String left = expression(irt.getSub(1), o);
     	String right = expression(irt.getSub(2), o);
@@ -52,10 +52,12 @@ public class Cg
     	if (op.equals("<=")) {
     		emit(o, "SUB "+reg+","+right+","+left);
     		emit(o, "BLTZ "+reg+","+elseLabel);
+    		emit(o, "JMP "+thenLabel);
     	}
     	else if (op.equals("=")) {
     		emit(o, "SUB "+reg+","+left+","+right);
     		emit(o, "BNEZ "+reg+","+elseLabel);
+    		emit(o, "JMP "+thenLabel);
     	}
     }
     else if (irt.getOp().equals("JUMP")) {
