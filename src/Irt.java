@@ -266,32 +266,42 @@ public class Irt {
 		IRTree irt1 = new IRTree(), irt2 = new IRTree();
 		Token t = ast.getToken();
 		int tt = t.getType();
-		switch (tt) {
-		case INTNUM:
+		if (tt == INTNUM) {
 			constant(ast, irt1);
 			irt.setOp("CONST");
 			irt.addSub(irt1);
-			break;
-		case ID:
+		}
+		else if (tt == ID) {
 			irt.setOp("MEM");
 			irt.addSub(new IRTree("CONST", new IRTree(Integer.toString(Memory
 					.allocateVar(t.getText())))));
-			break;
-		case MULT:
-		case PLUS:
-		case MINUS:
+		}
+		else {
 			irt.setOp("BINOP");
-			expression((CommonTree) ast.getChild(0), irt1);
-			expression((CommonTree) ast.getChild(1), irt2);
-			if (tt == MULT)
+			if (tt == MULT) {
+				expression((CommonTree) ast.getChild(0), irt1);
+				expression((CommonTree) ast.getChild(1), irt2);
 				irt.addSub(new IRTree("*"));
-			else if (tt == PLUS)
+			}
+			else if (tt == PLUS) {
+				expression((CommonTree) ast.getChild(0), irt1);
+				expression((CommonTree) ast.getChild(1), irt2);
 				irt.addSub(new IRTree("+"));
-			else
+			}
+			else if (tt == MINUS) {
+				if(ast.getChildCount() == 1) {
+					irt1.setOp("CONST");
+					irt1.addSub(new IRTree("0"));
+					expression((CommonTree) ast.getChild(0), irt2);
+				}
+				else {
+					expression((CommonTree) ast.getChild(0), irt1);
+					expression((CommonTree) ast.getChild(1), irt2);
+				}	
 				irt.addSub(new IRTree("-"));
+			}
 			irt.addSub(irt1);
-			irt.addSub(irt2);
-			break;
+			irt.addSub(irt2);			
 		}
 	}
 

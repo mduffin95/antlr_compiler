@@ -65,10 +65,16 @@ exp :
     ;
 
 term :
-    factor ( MULT^ factor )* 
+    unary ( MULT^ unary )* 
+    ;
+    
+unary :
+      PLUS! atom
+    | MINUS^ atom
+    | atom
     ;
 
-factor :
+atom :
       ID
     | INTNUM
     | OPENPAREN! exp CLOSEPAREN!

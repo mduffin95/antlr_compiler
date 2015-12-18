@@ -1,4 +1,4 @@
-// $ANTLR 3.2 debian-10 /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Lex.g 2015-12-13 17:29:48
+// $ANTLR 3.2 debian-10 /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Lex.g 2015-12-18 22:17:58
 
 import org.antlr.runtime.*;
 import java.util.Stack;

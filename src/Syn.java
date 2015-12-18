@@ -1,4 +1,4 @@
-// $ANTLR 3.2 debian-10 /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Syn.g 2015-12-13 17:29:47
+// $ANTLR 3.2 debian-10 /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Syn.g 2015-12-18 22:17:59
 
 import org.antlr.runtime.*;
 import java.util.Stack;
@@ -455,7 +455,7 @@ public class Syn extends Parser {
                     int alt2=2;
                     int LA2_0 = input.LA(1);
 
-                    if ( (LA2_0==FALSE||LA2_0==TRUE||LA2_0==OPENPAREN||LA2_0==INTNUM||LA2_0==ID||LA2_0==NOT) ) {
+                    if ( (LA2_0==FALSE||LA2_0==TRUE||LA2_0==OPENPAREN||LA2_0==INTNUM||LA2_0==ID||(LA2_0>=MINUS && LA2_0<=PLUS)||LA2_0==NOT) ) {
                         alt2=1;
                     }
                     else if ( (LA2_0==STRING) ) {
@@ -749,7 +749,7 @@ public class Syn extends Parser {
             if ( (LA5_0==NOT) ) {
                 alt5=1;
             }
-            else if ( (LA5_0==FALSE||LA5_0==TRUE||LA5_0==OPENPAREN||LA5_0==INTNUM||LA5_0==ID) ) {
+            else if ( (LA5_0==FALSE||LA5_0==TRUE||LA5_0==OPENPAREN||LA5_0==INTNUM||LA5_0==ID||(LA5_0>=MINUS && LA5_0<=PLUS)) ) {
                 alt5=2;
             }
             else {
@@ -857,6 +857,12 @@ public class Syn extends Parser {
             else if ( (LA6_0==FALSE) ) {
                 alt6=2;
             }
+            else if ( (LA6_0==PLUS) && (synpred2_Syn())) {
+                alt6=3;
+            }
+            else if ( (LA6_0==MINUS) && (synpred2_Syn())) {
+                alt6=3;
+            }
             else if ( (LA6_0==ID) && (synpred2_Syn())) {
                 alt6=3;
             }
@@ -864,7 +870,7 @@ public class Syn extends Parser {
                 alt6=3;
             }
             else if ( (LA6_0==OPENPAREN) ) {
-                int LA6_5 = input.LA(2);
+                int LA6_7 = input.LA(2);
 
                 if ( (synpred2_Syn()) ) {
                     alt6=3;
@@ -875,7 +881,7 @@ public class Syn extends Parser {
                 else {
                     if (state.backtracking>0) {state.failed=true; return retval;}
                     NoViableAltException nvae =
-                        new NoViableAltException("", 6, 5, input);
+                        new NoViableAltException("", 6, 7, input);
 
                     throw nvae;
                 }
@@ -1090,7 +1096,7 @@ public class Syn extends Parser {
     };
 
     // $ANTLR start "term"
-    // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Syn.g:67:1: term : factor ( MULT factor )* ;
+    // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Syn.g:67:1: term : unary ( MULT unary )* ;
     public final Syn.term_return term() throws RecognitionException {
         Syn.term_return retval = new Syn.term_return();
         retval.start = input.LT(1);
@@ -1098,26 +1104,26 @@ public class Syn extends Parser {
         Object root_0 = null;
 
         Token MULT54=null;
-        Syn.factor_return factor53 = null;
+        Syn.unary_return unary53 = null;
 
-        Syn.factor_return factor55 = null;
+        Syn.unary_return unary55 = null;
 
 
         Object MULT54_tree=null;
 
         try {
-            // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Syn.g:67:6: ( factor ( MULT factor )* )
-            // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Syn.g:68:5: factor ( MULT factor )*
+            // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Syn.g:67:6: ( unary ( MULT unary )* )
+            // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Syn.g:68:5: unary ( MULT unary )*
             {
             root_0 = (Object)adaptor.nil();
 
-            pushFollow(FOLLOW_factor_in_term472);
-            factor53=factor();
+            pushFollow(FOLLOW_unary_in_term472);
+            unary53=unary();
 
             state._fsp--;
             if (state.failed) return retval;
-            if ( state.backtracking==0 ) adaptor.addChild(root_0, factor53.getTree());
-            // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Syn.g:68:12: ( MULT factor )*
+            if ( state.backtracking==0 ) adaptor.addChild(root_0, unary53.getTree());
+            // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Syn.g:68:11: ( MULT unary )*
             loop8:
             do {
                 int alt8=2;
@@ -1130,19 +1136,19 @@ public class Syn extends Parser {
 
                 switch (alt8) {
             	case 1 :
-            	    // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Syn.g:68:14: MULT factor
+            	    // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Syn.g:68:13: MULT unary
             	    {
             	    MULT54=(Token)match(input,MULT,FOLLOW_MULT_in_term476); if (state.failed) return retval;
             	    if ( state.backtracking==0 ) {
             	    MULT54_tree = (Object)adaptor.create(MULT54);
             	    root_0 = (Object)adaptor.becomeRoot(MULT54_tree, root_0);
             	    }
-            	    pushFollow(FOLLOW_factor_in_term479);
-            	    factor55=factor();
+            	    pushFollow(FOLLOW_unary_in_term479);
+            	    unary55=unary();
 
             	    state._fsp--;
             	    if (state.failed) return retval;
-            	    if ( state.backtracking==0 ) adaptor.addChild(root_0, factor55.getTree());
+            	    if ( state.backtracking==0 ) adaptor.addChild(root_0, unary55.getTree());
 
             	    }
             	    break;
@@ -1175,46 +1181,48 @@ public class Syn extends Parser {
     }
     // $ANTLR end "term"
 
-    public static class factor_return extends ParserRuleReturnScope {
+    public static class unary_return extends ParserRuleReturnScope {
         Object tree;
         public Object getTree() { return tree; }
     };
 
-    // $ANTLR start "factor"
-    // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Syn.g:71:1: factor : ( ID | INTNUM | OPENPAREN exp CLOSEPAREN );
-    public final Syn.factor_return factor() throws RecognitionException {
-        Syn.factor_return retval = new Syn.factor_return();
+    // $ANTLR start "unary"
+    // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Syn.g:71:1: unary : ( PLUS atom | MINUS atom | atom );
+    public final Syn.unary_return unary() throws RecognitionException {
+        Syn.unary_return retval = new Syn.unary_return();
         retval.start = input.LT(1);
 
         Object root_0 = null;
 
-        Token ID56=null;
-        Token INTNUM57=null;
-        Token OPENPAREN58=null;
-        Token CLOSEPAREN60=null;
-        Syn.exp_return exp59 = null;
+        Token PLUS56=null;
+        Token MINUS58=null;
+        Syn.atom_return atom57 = null;
+
+        Syn.atom_return atom59 = null;
+
+        Syn.atom_return atom60 = null;
 
 
-        Object ID56_tree=null;
-        Object INTNUM57_tree=null;
-        Object OPENPAREN58_tree=null;
-        Object CLOSEPAREN60_tree=null;
+        Object PLUS56_tree=null;
+        Object MINUS58_tree=null;
 
         try {
-            // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Syn.g:71:8: ( ID | INTNUM | OPENPAREN exp CLOSEPAREN )
+            // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Syn.g:71:7: ( PLUS atom | MINUS atom | atom )
             int alt9=3;
             switch ( input.LA(1) ) {
-            case ID:
+            case PLUS:
                 {
                 alt9=1;
                 }
                 break;
-            case INTNUM:
+            case MINUS:
                 {
                 alt9=2;
                 }
                 break;
             case OPENPAREN:
+            case INTNUM:
+            case ID:
                 {
                 alt9=3;
                 }
@@ -1229,44 +1237,50 @@ public class Syn extends Parser {
 
             switch (alt9) {
                 case 1 :
-                    // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Syn.g:72:7: ID
+                    // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Syn.g:72:7: PLUS atom
                     {
                     root_0 = (Object)adaptor.nil();
 
-                    ID56=(Token)match(input,ID,FOLLOW_ID_in_factor502); if (state.failed) return retval;
-                    if ( state.backtracking==0 ) {
-                    ID56_tree = (Object)adaptor.create(ID56);
-                    adaptor.addChild(root_0, ID56_tree);
-                    }
+                    PLUS56=(Token)match(input,PLUS,FOLLOW_PLUS_in_unary506); if (state.failed) return retval;
+                    pushFollow(FOLLOW_atom_in_unary509);
+                    atom57=atom();
+
+                    state._fsp--;
+                    if (state.failed) return retval;
+                    if ( state.backtracking==0 ) adaptor.addChild(root_0, atom57.getTree());
 
                     }
                     break;
                 case 2 :
-                    // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Syn.g:73:7: INTNUM
+                    // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Syn.g:73:7: MINUS atom
                     {
                     root_0 = (Object)adaptor.nil();
 
-                    INTNUM57=(Token)match(input,INTNUM,FOLLOW_INTNUM_in_factor510); if (state.failed) return retval;
+                    MINUS58=(Token)match(input,MINUS,FOLLOW_MINUS_in_unary517); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
-                    INTNUM57_tree = (Object)adaptor.create(INTNUM57);
-                    adaptor.addChild(root_0, INTNUM57_tree);
+                    MINUS58_tree = (Object)adaptor.create(MINUS58);
+                    root_0 = (Object)adaptor.becomeRoot(MINUS58_tree, root_0);
                     }
+                    pushFollow(FOLLOW_atom_in_unary520);
+                    atom59=atom();
+
+                    state._fsp--;
+                    if (state.failed) return retval;
+                    if ( state.backtracking==0 ) adaptor.addChild(root_0, atom59.getTree());
 
                     }
                     break;
                 case 3 :
-                    // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Syn.g:74:7: OPENPAREN exp CLOSEPAREN
+                    // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Syn.g:74:7: atom
                     {
                     root_0 = (Object)adaptor.nil();
 
-                    OPENPAREN58=(Token)match(input,OPENPAREN,FOLLOW_OPENPAREN_in_factor518); if (state.failed) return retval;
-                    pushFollow(FOLLOW_exp_in_factor521);
-                    exp59=exp();
+                    pushFollow(FOLLOW_atom_in_unary528);
+                    atom60=atom();
 
                     state._fsp--;
                     if (state.failed) return retval;
-                    if ( state.backtracking==0 ) adaptor.addChild(root_0, exp59.getTree());
-                    CLOSEPAREN60=(Token)match(input,CLOSEPAREN,FOLLOW_CLOSEPAREN_in_factor523); if (state.failed) return retval;
+                    if ( state.backtracking==0 ) adaptor.addChild(root_0, atom60.getTree());
 
                     }
                     break;
@@ -1290,7 +1304,124 @@ public class Syn extends Parser {
         }
         return retval;
     }
-    // $ANTLR end "factor"
+    // $ANTLR end "unary"
+
+    public static class atom_return extends ParserRuleReturnScope {
+        Object tree;
+        public Object getTree() { return tree; }
+    };
+
+    // $ANTLR start "atom"
+    // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Syn.g:77:1: atom : ( ID | INTNUM | OPENPAREN exp CLOSEPAREN );
+    public final Syn.atom_return atom() throws RecognitionException {
+        Syn.atom_return retval = new Syn.atom_return();
+        retval.start = input.LT(1);
+
+        Object root_0 = null;
+
+        Token ID61=null;
+        Token INTNUM62=null;
+        Token OPENPAREN63=null;
+        Token CLOSEPAREN65=null;
+        Syn.exp_return exp64 = null;
+
+
+        Object ID61_tree=null;
+        Object INTNUM62_tree=null;
+        Object OPENPAREN63_tree=null;
+        Object CLOSEPAREN65_tree=null;
+
+        try {
+            // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Syn.g:77:6: ( ID | INTNUM | OPENPAREN exp CLOSEPAREN )
+            int alt10=3;
+            switch ( input.LA(1) ) {
+            case ID:
+                {
+                alt10=1;
+                }
+                break;
+            case INTNUM:
+                {
+                alt10=2;
+                }
+                break;
+            case OPENPAREN:
+                {
+                alt10=3;
+                }
+                break;
+            default:
+                if (state.backtracking>0) {state.failed=true; return retval;}
+                NoViableAltException nvae =
+                    new NoViableAltException("", 10, 0, input);
+
+                throw nvae;
+            }
+
+            switch (alt10) {
+                case 1 :
+                    // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Syn.g:78:7: ID
+                    {
+                    root_0 = (Object)adaptor.nil();
+
+                    ID61=(Token)match(input,ID,FOLLOW_ID_in_atom547); if (state.failed) return retval;
+                    if ( state.backtracking==0 ) {
+                    ID61_tree = (Object)adaptor.create(ID61);
+                    adaptor.addChild(root_0, ID61_tree);
+                    }
+
+                    }
+                    break;
+                case 2 :
+                    // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Syn.g:79:7: INTNUM
+                    {
+                    root_0 = (Object)adaptor.nil();
+
+                    INTNUM62=(Token)match(input,INTNUM,FOLLOW_INTNUM_in_atom555); if (state.failed) return retval;
+                    if ( state.backtracking==0 ) {
+                    INTNUM62_tree = (Object)adaptor.create(INTNUM62);
+                    adaptor.addChild(root_0, INTNUM62_tree);
+                    }
+
+                    }
+                    break;
+                case 3 :
+                    // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Syn.g:80:7: OPENPAREN exp CLOSEPAREN
+                    {
+                    root_0 = (Object)adaptor.nil();
+
+                    OPENPAREN63=(Token)match(input,OPENPAREN,FOLLOW_OPENPAREN_in_atom563); if (state.failed) return retval;
+                    pushFollow(FOLLOW_exp_in_atom566);
+                    exp64=exp();
+
+                    state._fsp--;
+                    if (state.failed) return retval;
+                    if ( state.backtracking==0 ) adaptor.addChild(root_0, exp64.getTree());
+                    CLOSEPAREN65=(Token)match(input,CLOSEPAREN,FOLLOW_CLOSEPAREN_in_atom568); if (state.failed) return retval;
+
+                    }
+                    break;
+
+            }
+            retval.stop = input.LT(-1);
+
+            if ( state.backtracking==0 ) {
+
+            retval.tree = (Object)adaptor.rulePostProcessing(root_0);
+            adaptor.setTokenBoundaries(retval.tree, retval.start, retval.stop);
+            }
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+    	retval.tree = (Object)adaptor.errorNode(input, retval.start, input.LT(-1), re);
+
+        }
+        finally {
+        }
+        return retval;
+    }
+    // $ANTLR end "atom"
 
     // $ANTLR start synpred1_Syn
     public final void synpred1_Syn_fragment() throws RecognitionException {   
@@ -1459,16 +1590,16 @@ public class Syn extends Parser {
     public static final BitSet FOLLOW_SEMICOLON_in_statements72 = new BitSet(new long[]{0x0000000001017380L});
     public static final BitSet FOLLOW_statement_in_statements75 = new BitSet(new long[]{0x0000000000008002L});
     public static final BitSet FOLLOW_ID_in_statement97 = new BitSet(new long[]{0x0000000010000000L});
-    public static final BitSet FOLLOW_ASSIGN_in_statement99 = new BitSet(new long[]{0x0000000001050000L});
+    public static final BitSet FOLLOW_ASSIGN_in_statement99 = new BitSet(new long[]{0x000000000D050000L});
     public static final BitSet FOLLOW_exp_in_statement102 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_SKIP_in_statement110 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_IF_in_statement118 = new BitSet(new long[]{0x0000000101050840L});
+    public static final BitSet FOLLOW_IF_in_statement118 = new BitSet(new long[]{0x000000010D050840L});
     public static final BitSet FOLLOW_boolexp_in_statement121 = new BitSet(new long[]{0x0000000000000400L});
     public static final BitSet FOLLOW_THEN_in_statement123 = new BitSet(new long[]{0x0000000001017380L});
     public static final BitSet FOLLOW_statement_in_statement126 = new BitSet(new long[]{0x0000000000000020L});
     public static final BitSet FOLLOW_ELSE_in_statement128 = new BitSet(new long[]{0x0000000001017380L});
     public static final BitSet FOLLOW_statement_in_statement131 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_WHILE_in_statement139 = new BitSet(new long[]{0x0000000101050840L});
+    public static final BitSet FOLLOW_WHILE_in_statement139 = new BitSet(new long[]{0x000000010D050840L});
     public static final BitSet FOLLOW_boolexp_in_statement142 = new BitSet(new long[]{0x0000000000000010L});
     public static final BitSet FOLLOW_DO_in_statement144 = new BitSet(new long[]{0x0000000001017380L});
     public static final BitSet FOLLOW_statement_in_statement147 = new BitSet(new long[]{0x0000000000000002L});
@@ -1477,11 +1608,11 @@ public class Syn extends Parser {
     public static final BitSet FOLLOW_ID_in_statement161 = new BitSet(new long[]{0x0000000000020000L});
     public static final BitSet FOLLOW_CLOSEPAREN_in_statement163 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_WRITE_in_statement184 = new BitSet(new long[]{0x0000000000010000L});
-    public static final BitSet FOLLOW_OPENPAREN_in_statement187 = new BitSet(new long[]{0x0000000001050000L});
+    public static final BitSet FOLLOW_OPENPAREN_in_statement187 = new BitSet(new long[]{0x000000000D050000L});
     public static final BitSet FOLLOW_exp_in_statement190 = new BitSet(new long[]{0x0000000000020000L});
     public static final BitSet FOLLOW_CLOSEPAREN_in_statement192 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_WRITE_in_statement201 = new BitSet(new long[]{0x0000000000010000L});
-    public static final BitSet FOLLOW_OPENPAREN_in_statement204 = new BitSet(new long[]{0x00000001010D0840L});
+    public static final BitSet FOLLOW_OPENPAREN_in_statement204 = new BitSet(new long[]{0x000000010D0D0840L});
     public static final BitSet FOLLOW_boolexp_in_statement209 = new BitSet(new long[]{0x0000000000020000L});
     public static final BitSet FOLLOW_string_in_statement213 = new BitSet(new long[]{0x0000000000020000L});
     public static final BitSet FOLLOW_CLOSEPAREN_in_statement217 = new BitSet(new long[]{0x0000000000000002L});
@@ -1491,32 +1622,37 @@ public class Syn extends Parser {
     public static final BitSet FOLLOW_CLOSEPAREN_in_statement239 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_STRING_in_string271 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_boolterm_in_boolexp296 = new BitSet(new long[]{0x0000000080000002L});
-    public static final BitSet FOLLOW_AND_in_boolexp300 = new BitSet(new long[]{0x0000000101050840L});
+    public static final BitSet FOLLOW_AND_in_boolexp300 = new BitSet(new long[]{0x000000010D050840L});
     public static final BitSet FOLLOW_boolterm_in_boolexp303 = new BitSet(new long[]{0x0000000080000002L});
-    public static final BitSet FOLLOW_NOT_in_boolterm325 = new BitSet(new long[]{0x0000000101050840L});
+    public static final BitSet FOLLOW_NOT_in_boolterm325 = new BitSet(new long[]{0x000000010D050840L});
     public static final BitSet FOLLOW_bool_in_boolterm328 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_bool_in_boolterm336 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_TRUE_in_bool359 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_FALSE_in_bool367 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_exp_in_bool393 = new BitSet(new long[]{0x0000000060000000L});
-    public static final BitSet FOLLOW_set_in_bool395 = new BitSet(new long[]{0x0000000001050000L});
+    public static final BitSet FOLLOW_set_in_bool395 = new BitSet(new long[]{0x000000000D050000L});
     public static final BitSet FOLLOW_exp_in_bool406 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_OPENPAREN_in_bool414 = new BitSet(new long[]{0x0000000101050840L});
+    public static final BitSet FOLLOW_OPENPAREN_in_bool414 = new BitSet(new long[]{0x000000010D050840L});
     public static final BitSet FOLLOW_boolexp_in_bool417 = new BitSet(new long[]{0x0000000000020000L});
     public static final BitSet FOLLOW_CLOSEPAREN_in_bool419 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_term_in_exp437 = new BitSet(new long[]{0x000000000C000002L});
-    public static final BitSet FOLLOW_set_in_exp441 = new BitSet(new long[]{0x0000000001050000L});
+    public static final BitSet FOLLOW_set_in_exp441 = new BitSet(new long[]{0x000000000D050000L});
     public static final BitSet FOLLOW_term_in_exp452 = new BitSet(new long[]{0x000000000C000002L});
-    public static final BitSet FOLLOW_factor_in_term472 = new BitSet(new long[]{0x0000000002000002L});
-    public static final BitSet FOLLOW_MULT_in_term476 = new BitSet(new long[]{0x0000000001050000L});
-    public static final BitSet FOLLOW_factor_in_term479 = new BitSet(new long[]{0x0000000002000002L});
-    public static final BitSet FOLLOW_ID_in_factor502 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_INTNUM_in_factor510 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_OPENPAREN_in_factor518 = new BitSet(new long[]{0x0000000001050000L});
-    public static final BitSet FOLLOW_exp_in_factor521 = new BitSet(new long[]{0x0000000000020000L});
-    public static final BitSet FOLLOW_CLOSEPAREN_in_factor523 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_unary_in_term472 = new BitSet(new long[]{0x0000000002000002L});
+    public static final BitSet FOLLOW_MULT_in_term476 = new BitSet(new long[]{0x000000000D050000L});
+    public static final BitSet FOLLOW_unary_in_term479 = new BitSet(new long[]{0x0000000002000002L});
+    public static final BitSet FOLLOW_PLUS_in_unary506 = new BitSet(new long[]{0x000000000D050000L});
+    public static final BitSet FOLLOW_atom_in_unary509 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_MINUS_in_unary517 = new BitSet(new long[]{0x000000000D050000L});
+    public static final BitSet FOLLOW_atom_in_unary520 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_atom_in_unary528 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ID_in_atom547 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_INTNUM_in_atom555 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_OPENPAREN_in_atom563 = new BitSet(new long[]{0x000000000D050000L});
+    public static final BitSet FOLLOW_exp_in_atom566 = new BitSet(new long[]{0x0000000000020000L});
+    public static final BitSet FOLLOW_CLOSEPAREN_in_atom568 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_WRITE_in_synpred1_Syn174 = new BitSet(new long[]{0x0000000000010000L});
-    public static final BitSet FOLLOW_OPENPAREN_in_synpred1_Syn176 = new BitSet(new long[]{0x0000000001050000L});
+    public static final BitSet FOLLOW_OPENPAREN_in_synpred1_Syn176 = new BitSet(new long[]{0x000000000D050000L});
     public static final BitSet FOLLOW_exp_in_synpred1_Syn178 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_exp_in_synpred2_Syn377 = new BitSet(new long[]{0x0000000060000000L});
     public static final BitSet FOLLOW_set_in_synpred2_Syn379 = new BitSet(new long[]{0x0000000000000002L});
