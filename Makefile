@@ -13,13 +13,13 @@ all:
 	./antlr3 camle test6.w
 	./antlr3 camle test7.w
 	./assmule testsk.ass
-	./assmule test1.w
-	./assmule test2.w
-	./assmule test3.w
-	./assmule test4.w
-	./assmule test5.w
-	./assmule test6.w
-	./assmule test7.w
+	./assmule test1.ass
+	./assmule test2.ass
+	./assmule test3.ass
+	./assmule test4.ass
+	./assmule -j test5.ass
+	./assmule test6.ass
+	./assmule test7.ass
 
 clean:
 	rm -f *.class
