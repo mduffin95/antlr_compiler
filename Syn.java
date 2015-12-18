@@ -1,4 +1,4 @@
-// $ANTLR 3.2 debian-10 /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Syn.g 2015-12-18 22:17:59
+// $ANTLR 3.2 debian-10 Syn.g 2015-12-18 23:13:41
 
 import org.antlr.runtime.*;
 import java.util.Stack;
@@ -66,7 +66,7 @@ public class Syn extends Parser {
     }
 
     public String[] getTokenNames() { return Syn.tokenNames; }
-    public String getGrammarFileName() { return "/home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Syn.g"; }
+    public String getGrammarFileName() { return "Syn.g"; }
 
 
     	private String cleanString(String s){
@@ -84,7 +84,7 @@ public class Syn extends Parser {
     };
 
     // $ANTLR start "program"
-    // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Syn.g:21:1: program : statements ;
+    // Syn.g:21:1: program : statements ;
     public final Syn.program_return program() throws RecognitionException {
         Syn.program_return retval = new Syn.program_return();
         retval.start = input.LT(1);
@@ -96,8 +96,8 @@ public class Syn extends Parser {
 
 
         try {
-            // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Syn.g:21:9: ( statements )
-            // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Syn.g:22:7: statements
+            // Syn.g:21:9: ( statements )
+            // Syn.g:22:7: statements
             {
             root_0 = (Object)adaptor.nil();
 
@@ -136,7 +136,7 @@ public class Syn extends Parser {
     };
 
     // $ANTLR start "statements"
-    // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Syn.g:25:1: statements : statement ( SEMICOLON statement )* ;
+    // Syn.g:25:1: statements : statement ( SEMICOLON statement )* ;
     public final Syn.statements_return statements() throws RecognitionException {
         Syn.statements_return retval = new Syn.statements_return();
         retval.start = input.LT(1);
@@ -152,8 +152,8 @@ public class Syn extends Parser {
         Object SEMICOLON3_tree=null;
 
         try {
-            // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Syn.g:25:12: ( statement ( SEMICOLON statement )* )
-            // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Syn.g:26:7: statement ( SEMICOLON statement )*
+            // Syn.g:25:12: ( statement ( SEMICOLON statement )* )
+            // Syn.g:26:7: statement ( SEMICOLON statement )*
             {
             root_0 = (Object)adaptor.nil();
 
@@ -163,7 +163,7 @@ public class Syn extends Parser {
             state._fsp--;
             if (state.failed) return retval;
             if ( state.backtracking==0 ) adaptor.addChild(root_0, statement2.getTree());
-            // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Syn.g:26:17: ( SEMICOLON statement )*
+            // Syn.g:26:17: ( SEMICOLON statement )*
             loop1:
             do {
                 int alt1=2;
@@ -176,7 +176,7 @@ public class Syn extends Parser {
 
                 switch (alt1) {
             	case 1 :
-            	    // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Syn.g:26:19: SEMICOLON statement
+            	    // Syn.g:26:19: SEMICOLON statement
             	    {
             	    SEMICOLON3=(Token)match(input,SEMICOLON,FOLLOW_SEMICOLON_in_statements72); if (state.failed) return retval;
             	    if ( state.backtracking==0 ) {
@@ -227,7 +227,7 @@ public class Syn extends Parser {
     };
 
     // $ANTLR start "statement"
-    // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Syn.g:29:1: statement : ( ID ASSIGN exp | SKIP | IF boolexp THEN statement ELSE statement | WHILE boolexp DO statement | READ OPENPAREN ID CLOSEPAREN | ( WRITE OPENPAREN exp )=> WRITE OPENPAREN exp CLOSEPAREN | WRITE OPENPAREN ( boolexp | string ) CLOSEPAREN | WRITELN | OPENPAREN statements CLOSEPAREN );
+    // Syn.g:29:1: statement : ( ID ASSIGN exp | SKIP | IF boolexp THEN statement ELSE statement | WHILE boolexp DO statement | READ OPENPAREN ID CLOSEPAREN | ( WRITE OPENPAREN exp )=> WRITE OPENPAREN exp CLOSEPAREN | WRITE OPENPAREN ( boolexp | string ) CLOSEPAREN | WRITELN | OPENPAREN statements CLOSEPAREN );
     public final Syn.statement_return statement() throws RecognitionException {
         Syn.statement_return retval = new Syn.statement_return();
         retval.start = input.LT(1);
@@ -299,12 +299,12 @@ public class Syn extends Parser {
         Object CLOSEPAREN35_tree=null;
 
         try {
-            // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Syn.g:29:11: ( ID ASSIGN exp | SKIP | IF boolexp THEN statement ELSE statement | WHILE boolexp DO statement | READ OPENPAREN ID CLOSEPAREN | ( WRITE OPENPAREN exp )=> WRITE OPENPAREN exp CLOSEPAREN | WRITE OPENPAREN ( boolexp | string ) CLOSEPAREN | WRITELN | OPENPAREN statements CLOSEPAREN )
+            // Syn.g:29:11: ( ID ASSIGN exp | SKIP | IF boolexp THEN statement ELSE statement | WHILE boolexp DO statement | READ OPENPAREN ID CLOSEPAREN | ( WRITE OPENPAREN exp )=> WRITE OPENPAREN exp CLOSEPAREN | WRITE OPENPAREN ( boolexp | string ) CLOSEPAREN | WRITELN | OPENPAREN statements CLOSEPAREN )
             int alt3=9;
             alt3 = dfa3.predict(input);
             switch (alt3) {
                 case 1 :
-                    // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Syn.g:30:7: ID ASSIGN exp
+                    // Syn.g:30:7: ID ASSIGN exp
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -328,7 +328,7 @@ public class Syn extends Parser {
                     }
                     break;
                 case 2 :
-                    // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Syn.g:31:7: SKIP
+                    // Syn.g:31:7: SKIP
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -341,7 +341,7 @@ public class Syn extends Parser {
                     }
                     break;
                 case 3 :
-                    // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Syn.g:32:7: IF boolexp THEN statement ELSE statement
+                    // Syn.g:32:7: IF boolexp THEN statement ELSE statement
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -374,7 +374,7 @@ public class Syn extends Parser {
                     }
                     break;
                 case 4 :
-                    // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Syn.g:33:7: WHILE boolexp DO statement
+                    // Syn.g:33:7: WHILE boolexp DO statement
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -400,7 +400,7 @@ public class Syn extends Parser {
                     }
                     break;
                 case 5 :
-                    // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Syn.g:34:7: READ OPENPAREN ID CLOSEPAREN
+                    // Syn.g:34:7: READ OPENPAREN ID CLOSEPAREN
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -420,7 +420,7 @@ public class Syn extends Parser {
                     }
                     break;
                 case 6 :
-                    // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Syn.g:35:7: ( WRITE OPENPAREN exp )=> WRITE OPENPAREN exp CLOSEPAREN
+                    // Syn.g:35:7: ( WRITE OPENPAREN exp )=> WRITE OPENPAREN exp CLOSEPAREN
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -441,7 +441,7 @@ public class Syn extends Parser {
                     }
                     break;
                 case 7 :
-                    // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Syn.g:36:7: WRITE OPENPAREN ( boolexp | string ) CLOSEPAREN
+                    // Syn.g:36:7: WRITE OPENPAREN ( boolexp | string ) CLOSEPAREN
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -451,7 +451,7 @@ public class Syn extends Parser {
                     root_0 = (Object)adaptor.becomeRoot(WRITE27_tree, root_0);
                     }
                     OPENPAREN28=(Token)match(input,OPENPAREN,FOLLOW_OPENPAREN_in_statement204); if (state.failed) return retval;
-                    // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Syn.g:36:25: ( boolexp | string )
+                    // Syn.g:36:25: ( boolexp | string )
                     int alt2=2;
                     int LA2_0 = input.LA(1);
 
@@ -470,7 +470,7 @@ public class Syn extends Parser {
                     }
                     switch (alt2) {
                         case 1 :
-                            // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Syn.g:36:27: boolexp
+                            // Syn.g:36:27: boolexp
                             {
                             pushFollow(FOLLOW_boolexp_in_statement209);
                             boolexp29=boolexp();
@@ -482,7 +482,7 @@ public class Syn extends Parser {
                             }
                             break;
                         case 2 :
-                            // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Syn.g:36:37: string
+                            // Syn.g:36:37: string
                             {
                             pushFollow(FOLLOW_string_in_statement213);
                             string30=string();
@@ -501,7 +501,7 @@ public class Syn extends Parser {
                     }
                     break;
                 case 8 :
-                    // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Syn.g:37:7: WRITELN
+                    // Syn.g:37:7: WRITELN
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -514,7 +514,7 @@ public class Syn extends Parser {
                     }
                     break;
                 case 9 :
-                    // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Syn.g:38:7: OPENPAREN statements CLOSEPAREN
+                    // Syn.g:38:7: OPENPAREN statements CLOSEPAREN
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -562,7 +562,7 @@ public class Syn extends Parser {
     };
 
     // $ANTLR start "string"
-    // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Syn.g:41:1: string : s= STRING -> STRING[$string::tmp] ;
+    // Syn.g:41:1: string : s= STRING -> STRING[$string::tmp] ;
     public final Syn.string_return string() throws RecognitionException {
         string_stack.push(new string_scope());
         Syn.string_return retval = new Syn.string_return();
@@ -576,8 +576,8 @@ public class Syn extends Parser {
         RewriteRuleTokenStream stream_STRING=new RewriteRuleTokenStream(adaptor,"token STRING");
 
         try {
-            // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Syn.g:43:5: (s= STRING -> STRING[$string::tmp] )
-            // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Syn.g:44:5: s= STRING
+            // Syn.g:43:5: (s= STRING -> STRING[$string::tmp] )
+            // Syn.g:44:5: s= STRING
             {
             s=(Token)match(input,STRING,FOLLOW_STRING_in_string271); if (state.failed) return retval; 
             if ( state.backtracking==0 ) stream_STRING.add(s);
@@ -635,7 +635,7 @@ public class Syn extends Parser {
     };
 
     // $ANTLR start "boolexp"
-    // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Syn.g:47:1: boolexp : boolterm ( AND boolterm )* ;
+    // Syn.g:47:1: boolexp : boolterm ( AND boolterm )* ;
     public final Syn.boolexp_return boolexp() throws RecognitionException {
         Syn.boolexp_return retval = new Syn.boolexp_return();
         retval.start = input.LT(1);
@@ -651,8 +651,8 @@ public class Syn extends Parser {
         Object AND37_tree=null;
 
         try {
-            // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Syn.g:47:9: ( boolterm ( AND boolterm )* )
-            // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Syn.g:48:7: boolterm ( AND boolterm )*
+            // Syn.g:47:9: ( boolterm ( AND boolterm )* )
+            // Syn.g:48:7: boolterm ( AND boolterm )*
             {
             root_0 = (Object)adaptor.nil();
 
@@ -662,7 +662,7 @@ public class Syn extends Parser {
             state._fsp--;
             if (state.failed) return retval;
             if ( state.backtracking==0 ) adaptor.addChild(root_0, boolterm36.getTree());
-            // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Syn.g:48:16: ( AND boolterm )*
+            // Syn.g:48:16: ( AND boolterm )*
             loop4:
             do {
                 int alt4=2;
@@ -675,7 +675,7 @@ public class Syn extends Parser {
 
                 switch (alt4) {
             	case 1 :
-            	    // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Syn.g:48:18: AND boolterm
+            	    // Syn.g:48:18: AND boolterm
             	    {
             	    AND37=(Token)match(input,AND,FOLLOW_AND_in_boolexp300); if (state.failed) return retval;
             	    if ( state.backtracking==0 ) {
@@ -726,7 +726,7 @@ public class Syn extends Parser {
     };
 
     // $ANTLR start "boolterm"
-    // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Syn.g:51:1: boolterm : ( NOT bool | bool );
+    // Syn.g:51:1: boolterm : ( NOT bool | bool );
     public final Syn.boolterm_return boolterm() throws RecognitionException {
         Syn.boolterm_return retval = new Syn.boolterm_return();
         retval.start = input.LT(1);
@@ -742,7 +742,7 @@ public class Syn extends Parser {
         Object NOT39_tree=null;
 
         try {
-            // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Syn.g:51:10: ( NOT bool | bool )
+            // Syn.g:51:10: ( NOT bool | bool )
             int alt5=2;
             int LA5_0 = input.LA(1);
 
@@ -761,7 +761,7 @@ public class Syn extends Parser {
             }
             switch (alt5) {
                 case 1 :
-                    // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Syn.g:52:7: NOT bool
+                    // Syn.g:52:7: NOT bool
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -780,7 +780,7 @@ public class Syn extends Parser {
                     }
                     break;
                 case 2 :
-                    // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Syn.g:53:7: bool
+                    // Syn.g:53:7: bool
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -821,7 +821,7 @@ public class Syn extends Parser {
     };
 
     // $ANTLR start "bool"
-    // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Syn.g:56:1: bool : ( TRUE | FALSE | ( exp ( EQ | LEQ ) )=> exp ( EQ | LEQ ) exp | OPENPAREN boolexp CLOSEPAREN );
+    // Syn.g:56:1: bool : ( TRUE | FALSE | ( exp ( EQ | LEQ ) )=> exp ( EQ | LEQ ) exp | OPENPAREN boolexp CLOSEPAREN );
     public final Syn.bool_return bool() throws RecognitionException {
         Syn.bool_return retval = new Syn.bool_return();
         retval.start = input.LT(1);
@@ -847,7 +847,7 @@ public class Syn extends Parser {
         Object CLOSEPAREN49_tree=null;
 
         try {
-            // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Syn.g:56:6: ( TRUE | FALSE | ( exp ( EQ | LEQ ) )=> exp ( EQ | LEQ ) exp | OPENPAREN boolexp CLOSEPAREN )
+            // Syn.g:56:6: ( TRUE | FALSE | ( exp ( EQ | LEQ ) )=> exp ( EQ | LEQ ) exp | OPENPAREN boolexp CLOSEPAREN )
             int alt6=4;
             int LA6_0 = input.LA(1);
 
@@ -895,7 +895,7 @@ public class Syn extends Parser {
             }
             switch (alt6) {
                 case 1 :
-                    // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Syn.g:57:7: TRUE
+                    // Syn.g:57:7: TRUE
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -908,7 +908,7 @@ public class Syn extends Parser {
                     }
                     break;
                 case 2 :
-                    // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Syn.g:58:7: FALSE
+                    // Syn.g:58:7: FALSE
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -921,7 +921,7 @@ public class Syn extends Parser {
                     }
                     break;
                 case 3 :
-                    // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Syn.g:59:7: ( exp ( EQ | LEQ ) )=> exp ( EQ | LEQ ) exp
+                    // Syn.g:59:7: ( exp ( EQ | LEQ ) )=> exp ( EQ | LEQ ) exp
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -954,7 +954,7 @@ public class Syn extends Parser {
                     }
                     break;
                 case 4 :
-                    // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Syn.g:60:7: OPENPAREN boolexp CLOSEPAREN
+                    // Syn.g:60:7: OPENPAREN boolexp CLOSEPAREN
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -997,7 +997,7 @@ public class Syn extends Parser {
     };
 
     // $ANTLR start "exp"
-    // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Syn.g:63:1: exp : term ( ( PLUS | MINUS ) term )* ;
+    // Syn.g:63:1: exp : term ( ( PLUS | MINUS ) term )* ;
     public final Syn.exp_return exp() throws RecognitionException {
         Syn.exp_return retval = new Syn.exp_return();
         retval.start = input.LT(1);
@@ -1013,8 +1013,8 @@ public class Syn extends Parser {
         Object set51_tree=null;
 
         try {
-            // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Syn.g:63:5: ( term ( ( PLUS | MINUS ) term )* )
-            // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Syn.g:64:5: term ( ( PLUS | MINUS ) term )*
+            // Syn.g:63:5: ( term ( ( PLUS | MINUS ) term )* )
+            // Syn.g:64:5: term ( ( PLUS | MINUS ) term )*
             {
             root_0 = (Object)adaptor.nil();
 
@@ -1024,7 +1024,7 @@ public class Syn extends Parser {
             state._fsp--;
             if (state.failed) return retval;
             if ( state.backtracking==0 ) adaptor.addChild(root_0, term50.getTree());
-            // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Syn.g:64:10: ( ( PLUS | MINUS ) term )*
+            // Syn.g:64:10: ( ( PLUS | MINUS ) term )*
             loop7:
             do {
                 int alt7=2;
@@ -1037,7 +1037,7 @@ public class Syn extends Parser {
 
                 switch (alt7) {
             	case 1 :
-            	    // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Syn.g:64:12: ( PLUS | MINUS ) term
+            	    // Syn.g:64:12: ( PLUS | MINUS ) term
             	    {
             	    set51=(Token)input.LT(1);
             	    set51=(Token)input.LT(1);
@@ -1096,7 +1096,7 @@ public class Syn extends Parser {
     };
 
     // $ANTLR start "term"
-    // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Syn.g:67:1: term : unary ( MULT unary )* ;
+    // Syn.g:67:1: term : unary ( MULT unary )* ;
     public final Syn.term_return term() throws RecognitionException {
         Syn.term_return retval = new Syn.term_return();
         retval.start = input.LT(1);
@@ -1112,8 +1112,8 @@ public class Syn extends Parser {
         Object MULT54_tree=null;
 
         try {
-            // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Syn.g:67:6: ( unary ( MULT unary )* )
-            // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Syn.g:68:5: unary ( MULT unary )*
+            // Syn.g:67:6: ( unary ( MULT unary )* )
+            // Syn.g:68:5: unary ( MULT unary )*
             {
             root_0 = (Object)adaptor.nil();
 
@@ -1123,7 +1123,7 @@ public class Syn extends Parser {
             state._fsp--;
             if (state.failed) return retval;
             if ( state.backtracking==0 ) adaptor.addChild(root_0, unary53.getTree());
-            // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Syn.g:68:11: ( MULT unary )*
+            // Syn.g:68:11: ( MULT unary )*
             loop8:
             do {
                 int alt8=2;
@@ -1136,7 +1136,7 @@ public class Syn extends Parser {
 
                 switch (alt8) {
             	case 1 :
-            	    // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Syn.g:68:13: MULT unary
+            	    // Syn.g:68:13: MULT unary
             	    {
             	    MULT54=(Token)match(input,MULT,FOLLOW_MULT_in_term476); if (state.failed) return retval;
             	    if ( state.backtracking==0 ) {
@@ -1187,7 +1187,7 @@ public class Syn extends Parser {
     };
 
     // $ANTLR start "unary"
-    // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Syn.g:71:1: unary : ( PLUS atom | MINUS atom | atom );
+    // Syn.g:71:1: unary : ( PLUS atom | MINUS atom | atom );
     public final Syn.unary_return unary() throws RecognitionException {
         Syn.unary_return retval = new Syn.unary_return();
         retval.start = input.LT(1);
@@ -1207,7 +1207,7 @@ public class Syn extends Parser {
         Object MINUS58_tree=null;
 
         try {
-            // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Syn.g:71:7: ( PLUS atom | MINUS atom | atom )
+            // Syn.g:71:7: ( PLUS atom | MINUS atom | atom )
             int alt9=3;
             switch ( input.LA(1) ) {
             case PLUS:
@@ -1237,7 +1237,7 @@ public class Syn extends Parser {
 
             switch (alt9) {
                 case 1 :
-                    // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Syn.g:72:7: PLUS atom
+                    // Syn.g:72:7: PLUS atom
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -1252,7 +1252,7 @@ public class Syn extends Parser {
                     }
                     break;
                 case 2 :
-                    // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Syn.g:73:7: MINUS atom
+                    // Syn.g:73:7: MINUS atom
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -1271,7 +1271,7 @@ public class Syn extends Parser {
                     }
                     break;
                 case 3 :
-                    // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Syn.g:74:7: atom
+                    // Syn.g:74:7: atom
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -1312,7 +1312,7 @@ public class Syn extends Parser {
     };
 
     // $ANTLR start "atom"
-    // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Syn.g:77:1: atom : ( ID | INTNUM | OPENPAREN exp CLOSEPAREN );
+    // Syn.g:77:1: atom : ( ID | INTNUM | OPENPAREN exp CLOSEPAREN );
     public final Syn.atom_return atom() throws RecognitionException {
         Syn.atom_return retval = new Syn.atom_return();
         retval.start = input.LT(1);
@@ -1332,7 +1332,7 @@ public class Syn extends Parser {
         Object CLOSEPAREN65_tree=null;
 
         try {
-            // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Syn.g:77:6: ( ID | INTNUM | OPENPAREN exp CLOSEPAREN )
+            // Syn.g:77:6: ( ID | INTNUM | OPENPAREN exp CLOSEPAREN )
             int alt10=3;
             switch ( input.LA(1) ) {
             case ID:
@@ -1360,7 +1360,7 @@ public class Syn extends Parser {
 
             switch (alt10) {
                 case 1 :
-                    // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Syn.g:78:7: ID
+                    // Syn.g:78:7: ID
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -1373,7 +1373,7 @@ public class Syn extends Parser {
                     }
                     break;
                 case 2 :
-                    // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Syn.g:79:7: INTNUM
+                    // Syn.g:79:7: INTNUM
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -1386,7 +1386,7 @@ public class Syn extends Parser {
                     }
                     break;
                 case 3 :
-                    // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Syn.g:80:7: OPENPAREN exp CLOSEPAREN
+                    // Syn.g:80:7: OPENPAREN exp CLOSEPAREN
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -1425,8 +1425,8 @@ public class Syn extends Parser {
 
     // $ANTLR start synpred1_Syn
     public final void synpred1_Syn_fragment() throws RecognitionException {   
-        // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Syn.g:35:7: ( WRITE OPENPAREN exp )
-        // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Syn.g:35:9: WRITE OPENPAREN exp
+        // Syn.g:35:7: ( WRITE OPENPAREN exp )
+        // Syn.g:35:9: WRITE OPENPAREN exp
         {
         match(input,WRITE,FOLLOW_WRITE_in_synpred1_Syn174); if (state.failed) return ;
         match(input,OPENPAREN,FOLLOW_OPENPAREN_in_synpred1_Syn176); if (state.failed) return ;
@@ -1442,8 +1442,8 @@ public class Syn extends Parser {
 
     // $ANTLR start synpred2_Syn
     public final void synpred2_Syn_fragment() throws RecognitionException {   
-        // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Syn.g:59:7: ( exp ( EQ | LEQ ) )
-        // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Syn.g:59:9: exp ( EQ | LEQ )
+        // Syn.g:59:7: ( exp ( EQ | LEQ ) )
+        // Syn.g:59:9: exp ( EQ | LEQ )
         {
         pushFollow(FOLLOW_exp_in_synpred2_Syn377);
         exp();

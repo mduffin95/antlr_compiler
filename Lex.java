@@ -1,4 +1,4 @@
-// $ANTLR 3.2 debian-10 /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Lex.g 2015-12-18 22:17:58
+// $ANTLR 3.2 debian-10 Lex.g 2015-12-18 23:13:40
 
 import org.antlr.runtime.*;
 import java.util.Stack;
@@ -51,15 +51,15 @@ public class Lex extends Lexer {
         super(input,state);
 
     }
-    public String getGrammarFileName() { return "/home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Lex.g"; }
+    public String getGrammarFileName() { return "Lex.g"; }
 
     // $ANTLR start "DO"
     public final void mDO() throws RecognitionException {
         try {
             int _type = DO;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Lex.g:13:12: ( 'do' )
-            // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Lex.g:13:14: 'do'
+            // Lex.g:13:12: ( 'do' )
+            // Lex.g:13:14: 'do'
             {
             match("do"); 
 
@@ -79,8 +79,8 @@ public class Lex extends Lexer {
         try {
             int _type = ELSE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Lex.g:14:12: ( 'else' )
-            // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Lex.g:14:14: 'else'
+            // Lex.g:14:12: ( 'else' )
+            // Lex.g:14:14: 'else'
             {
             match("else"); 
 
@@ -100,8 +100,8 @@ public class Lex extends Lexer {
         try {
             int _type = FALSE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Lex.g:15:12: ( 'false' )
-            // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Lex.g:15:14: 'false'
+            // Lex.g:15:12: ( 'false' )
+            // Lex.g:15:14: 'false'
             {
             match("false"); 
 
@@ -121,8 +121,8 @@ public class Lex extends Lexer {
         try {
             int _type = IF;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Lex.g:16:12: ( 'if' )
-            // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Lex.g:16:14: 'if'
+            // Lex.g:16:12: ( 'if' )
+            // Lex.g:16:14: 'if'
             {
             match("if"); 
 
@@ -142,8 +142,8 @@ public class Lex extends Lexer {
         try {
             int _type = READ;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Lex.g:17:12: ( 'read' )
-            // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Lex.g:17:14: 'read'
+            // Lex.g:17:12: ( 'read' )
+            // Lex.g:17:14: 'read'
             {
             match("read"); 
 
@@ -163,8 +163,8 @@ public class Lex extends Lexer {
         try {
             int _type = SKIP;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Lex.g:18:12: ( 'skip' )
-            // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Lex.g:18:14: 'skip'
+            // Lex.g:18:12: ( 'skip' )
+            // Lex.g:18:14: 'skip'
             {
             match("skip"); 
 
@@ -184,8 +184,8 @@ public class Lex extends Lexer {
         try {
             int _type = THEN;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Lex.g:19:12: ( 'then' )
-            // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Lex.g:19:14: 'then'
+            // Lex.g:19:12: ( 'then' )
+            // Lex.g:19:14: 'then'
             {
             match("then"); 
 
@@ -205,8 +205,8 @@ public class Lex extends Lexer {
         try {
             int _type = TRUE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Lex.g:20:12: ( 'true' )
-            // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Lex.g:20:14: 'true'
+            // Lex.g:20:12: ( 'true' )
+            // Lex.g:20:14: 'true'
             {
             match("true"); 
 
@@ -226,8 +226,8 @@ public class Lex extends Lexer {
         try {
             int _type = WHILE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Lex.g:21:12: ( 'while' )
-            // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Lex.g:21:14: 'while'
+            // Lex.g:21:12: ( 'while' )
+            // Lex.g:21:14: 'while'
             {
             match("while"); 
 
@@ -247,8 +247,8 @@ public class Lex extends Lexer {
         try {
             int _type = WRITE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Lex.g:22:12: ( 'write' )
-            // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Lex.g:22:14: 'write'
+            // Lex.g:22:12: ( 'write' )
+            // Lex.g:22:14: 'write'
             {
             match("write"); 
 
@@ -268,8 +268,8 @@ public class Lex extends Lexer {
         try {
             int _type = WRITELN;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Lex.g:23:12: ( 'writeln' )
-            // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Lex.g:23:14: 'writeln'
+            // Lex.g:23:12: ( 'writeln' )
+            // Lex.g:23:14: 'writeln'
             {
             match("writeln"); 
 
@@ -289,8 +289,8 @@ public class Lex extends Lexer {
         try {
             int _type = SEMICOLON;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Lex.g:28:14: ( ';' )
-            // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Lex.g:28:16: ';'
+            // Lex.g:28:14: ( ';' )
+            // Lex.g:28:16: ';'
             {
             match(';'); 
 
@@ -309,8 +309,8 @@ public class Lex extends Lexer {
         try {
             int _type = OPENPAREN;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Lex.g:29:14: ( '(' )
-            // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Lex.g:29:16: '('
+            // Lex.g:29:14: ( '(' )
+            // Lex.g:29:16: '('
             {
             match('('); 
 
@@ -329,8 +329,8 @@ public class Lex extends Lexer {
         try {
             int _type = CLOSEPAREN;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Lex.g:30:14: ( ')' )
-            // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Lex.g:30:16: ')'
+            // Lex.g:30:14: ( ')' )
+            // Lex.g:30:16: ')'
             {
             match(')'); 
 
@@ -349,10 +349,10 @@ public class Lex extends Lexer {
         try {
             int _type = INTNUM;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Lex.g:32:14: ( ( '0' .. '9' )+ )
-            // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Lex.g:32:16: ( '0' .. '9' )+
+            // Lex.g:32:14: ( ( '0' .. '9' )+ )
+            // Lex.g:32:16: ( '0' .. '9' )+
             {
-            // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Lex.g:32:16: ( '0' .. '9' )+
+            // Lex.g:32:16: ( '0' .. '9' )+
             int cnt1=0;
             loop1:
             do {
@@ -366,7 +366,7 @@ public class Lex extends Lexer {
 
                 switch (alt1) {
             	case 1 :
-            	    // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Lex.g:32:17: '0' .. '9'
+            	    // Lex.g:32:17: '0' .. '9'
             	    {
             	    matchRange('0','9'); 
 
@@ -398,11 +398,11 @@ public class Lex extends Lexer {
         try {
             int _type = STRING;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Lex.g:34:14: ( '\\'' ( '\\'' '\\'' | ~ '\\'' )* '\\'' )
-            // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Lex.g:34:16: '\\'' ( '\\'' '\\'' | ~ '\\'' )* '\\''
+            // Lex.g:34:14: ( '\\'' ( '\\'' '\\'' | ~ '\\'' )* '\\'' )
+            // Lex.g:34:16: '\\'' ( '\\'' '\\'' | ~ '\\'' )* '\\''
             {
             match('\''); 
-            // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Lex.g:34:21: ( '\\'' '\\'' | ~ '\\'' )*
+            // Lex.g:34:21: ( '\\'' '\\'' | ~ '\\'' )*
             loop2:
             do {
                 int alt2=3;
@@ -424,7 +424,7 @@ public class Lex extends Lexer {
 
                 switch (alt2) {
             	case 1 :
-            	    // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Lex.g:34:22: '\\'' '\\''
+            	    // Lex.g:34:22: '\\'' '\\''
             	    {
             	    match('\''); 
             	    match('\''); 
@@ -432,7 +432,7 @@ public class Lex extends Lexer {
             	    }
             	    break;
             	case 2 :
-            	    // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Lex.g:34:34: ~ '\\''
+            	    // Lex.g:34:34: ~ '\\''
             	    {
             	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='&')||(input.LA(1)>='(' && input.LA(1)<='\uFFFF') ) {
             	        input.consume();
@@ -469,11 +469,11 @@ public class Lex extends Lexer {
         try {
             int _type = COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Lex.g:36:14: ( '{' (~ '}' )* '}' )
-            // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Lex.g:36:16: '{' (~ '}' )* '}'
+            // Lex.g:36:14: ( '{' (~ '}' )* '}' )
+            // Lex.g:36:16: '{' (~ '}' )* '}'
             {
             match('{'); 
-            // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Lex.g:36:20: (~ '}' )*
+            // Lex.g:36:20: (~ '}' )*
             loop3:
             do {
                 int alt3=2;
@@ -486,7 +486,7 @@ public class Lex extends Lexer {
 
                 switch (alt3) {
             	case 1 :
-            	    // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Lex.g:36:21: ~ '}'
+            	    // Lex.g:36:21: ~ '}'
             	    {
             	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='|')||(input.LA(1)>='~' && input.LA(1)<='\uFFFF') ) {
             	        input.consume();
@@ -524,10 +524,10 @@ public class Lex extends Lexer {
         try {
             int _type = WS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Lex.g:38:14: ( ( ' ' | '\\t' | '\\r' | '\\n' )+ )
-            // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Lex.g:38:16: ( ' ' | '\\t' | '\\r' | '\\n' )+
+            // Lex.g:38:14: ( ( ' ' | '\\t' | '\\r' | '\\n' )+ )
+            // Lex.g:38:16: ( ' ' | '\\t' | '\\r' | '\\n' )+
             {
-            // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Lex.g:38:16: ( ' ' | '\\t' | '\\r' | '\\n' )+
+            // Lex.g:38:16: ( ' ' | '\\t' | '\\r' | '\\n' )+
             int cnt4=0;
             loop4:
             do {
@@ -541,7 +541,7 @@ public class Lex extends Lexer {
 
                 switch (alt4) {
             	case 1 :
-            	    // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Lex.g:
+            	    // Lex.g:
             	    {
             	    if ( (input.LA(1)>='\t' && input.LA(1)<='\n')||input.LA(1)=='\r'||input.LA(1)==' ' ) {
             	        input.consume();
@@ -580,8 +580,8 @@ public class Lex extends Lexer {
     // $ANTLR start "LETTER"
     public final void mLETTER() throws RecognitionException {
         try {
-            // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Lex.g:41:14: ( 'a' .. 'z' | 'A' .. 'Z' )
-            // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Lex.g:
+            // Lex.g:41:14: ( 'a' .. 'z' | 'A' .. 'Z' )
+            // Lex.g:
             {
             if ( (input.LA(1)>='A' && input.LA(1)<='Z')||(input.LA(1)>='a' && input.LA(1)<='z') ) {
                 input.consume();
@@ -604,8 +604,8 @@ public class Lex extends Lexer {
     // $ANTLR start "DIGIT"
     public final void mDIGIT() throws RecognitionException {
         try {
-            // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Lex.g:45:14: ( '0' .. '9' )
-            // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Lex.g:45:16: '0' .. '9'
+            // Lex.g:45:14: ( '0' .. '9' )
+            // Lex.g:45:16: '0' .. '9'
             {
             matchRange('0','9'); 
 
@@ -622,11 +622,11 @@ public class Lex extends Lexer {
         try {
             int _type = ID;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Lex.g:47:14: ( LETTER ( LETTER | DIGIT )* )
-            // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Lex.g:47:16: LETTER ( LETTER | DIGIT )*
+            // Lex.g:47:14: ( LETTER ( LETTER | DIGIT )* )
+            // Lex.g:47:16: LETTER ( LETTER | DIGIT )*
             {
             mLETTER(); 
-            // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Lex.g:47:23: ( LETTER | DIGIT )*
+            // Lex.g:47:23: ( LETTER | DIGIT )*
             loop5:
             do {
                 int alt5=2;
@@ -639,7 +639,7 @@ public class Lex extends Lexer {
 
                 switch (alt5) {
             	case 1 :
-            	    // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Lex.g:
+            	    // Lex.g:
             	    {
             	    if ( (input.LA(1)>='0' && input.LA(1)<='9')||(input.LA(1)>='A' && input.LA(1)<='Z')||(input.LA(1)>='a' && input.LA(1)<='z') ) {
             	        input.consume();
@@ -675,8 +675,8 @@ public class Lex extends Lexer {
         try {
             int _type = MULT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Lex.g:49:14: ( '*' )
-            // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Lex.g:49:16: '*'
+            // Lex.g:49:14: ( '*' )
+            // Lex.g:49:16: '*'
             {
             match('*'); 
 
@@ -695,8 +695,8 @@ public class Lex extends Lexer {
         try {
             int _type = MINUS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Lex.g:50:14: ( '-' )
-            // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Lex.g:50:16: '-'
+            // Lex.g:50:14: ( '-' )
+            // Lex.g:50:16: '-'
             {
             match('-'); 
 
@@ -715,8 +715,8 @@ public class Lex extends Lexer {
         try {
             int _type = PLUS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Lex.g:51:14: ( '+' )
-            // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Lex.g:51:16: '+'
+            // Lex.g:51:14: ( '+' )
+            // Lex.g:51:16: '+'
             {
             match('+'); 
 
@@ -735,8 +735,8 @@ public class Lex extends Lexer {
         try {
             int _type = ASSIGN;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Lex.g:52:14: ( ':=' )
-            // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Lex.g:52:16: ':='
+            // Lex.g:52:14: ( ':=' )
+            // Lex.g:52:16: ':='
             {
             match(":="); 
 
@@ -756,8 +756,8 @@ public class Lex extends Lexer {
         try {
             int _type = EQ;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Lex.g:53:14: ( '=' )
-            // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Lex.g:53:16: '='
+            // Lex.g:53:14: ( '=' )
+            // Lex.g:53:16: '='
             {
             match('='); 
 
@@ -776,8 +776,8 @@ public class Lex extends Lexer {
         try {
             int _type = LEQ;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Lex.g:54:14: ( '<=' )
-            // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Lex.g:54:16: '<='
+            // Lex.g:54:14: ( '<=' )
+            // Lex.g:54:16: '<='
             {
             match("<="); 
 
@@ -797,8 +797,8 @@ public class Lex extends Lexer {
         try {
             int _type = AND;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Lex.g:55:14: ( '&' )
-            // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Lex.g:55:16: '&'
+            // Lex.g:55:14: ( '&' )
+            // Lex.g:55:16: '&'
             {
             match('&'); 
 
@@ -817,8 +817,8 @@ public class Lex extends Lexer {
         try {
             int _type = NOT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Lex.g:56:14: ( '!' )
-            // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Lex.g:56:16: '!'
+            // Lex.g:56:14: ( '!' )
+            // Lex.g:56:16: '!'
             {
             match('!'); 
 
@@ -833,194 +833,194 @@ public class Lex extends Lexer {
     // $ANTLR end "NOT"
 
     public void mTokens() throws RecognitionException {
-        // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Lex.g:1:8: ( DO | ELSE | FALSE | IF | READ | SKIP | THEN | TRUE | WHILE | WRITE | WRITELN | SEMICOLON | OPENPAREN | CLOSEPAREN | INTNUM | STRING | COMMENT | WS | ID | MULT | MINUS | PLUS | ASSIGN | EQ | LEQ | AND | NOT )
+        // Lex.g:1:8: ( DO | ELSE | FALSE | IF | READ | SKIP | THEN | TRUE | WHILE | WRITE | WRITELN | SEMICOLON | OPENPAREN | CLOSEPAREN | INTNUM | STRING | COMMENT | WS | ID | MULT | MINUS | PLUS | ASSIGN | EQ | LEQ | AND | NOT )
         int alt6=27;
         alt6 = dfa6.predict(input);
         switch (alt6) {
             case 1 :
-                // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Lex.g:1:10: DO
+                // Lex.g:1:10: DO
                 {
                 mDO(); 
 
                 }
                 break;
             case 2 :
-                // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Lex.g:1:13: ELSE
+                // Lex.g:1:13: ELSE
                 {
                 mELSE(); 
 
                 }
                 break;
             case 3 :
-                // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Lex.g:1:18: FALSE
+                // Lex.g:1:18: FALSE
                 {
                 mFALSE(); 
 
                 }
                 break;
             case 4 :
-                // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Lex.g:1:24: IF
+                // Lex.g:1:24: IF
                 {
                 mIF(); 
 
                 }
                 break;
             case 5 :
-                // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Lex.g:1:27: READ
+                // Lex.g:1:27: READ
                 {
                 mREAD(); 
 
                 }
                 break;
             case 6 :
-                // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Lex.g:1:32: SKIP
+                // Lex.g:1:32: SKIP
                 {
                 mSKIP(); 
 
                 }
                 break;
             case 7 :
-                // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Lex.g:1:37: THEN
+                // Lex.g:1:37: THEN
                 {
                 mTHEN(); 
 
                 }
                 break;
             case 8 :
-                // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Lex.g:1:42: TRUE
+                // Lex.g:1:42: TRUE
                 {
                 mTRUE(); 
 
                 }
                 break;
             case 9 :
-                // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Lex.g:1:47: WHILE
+                // Lex.g:1:47: WHILE
                 {
                 mWHILE(); 
 
                 }
                 break;
             case 10 :
-                // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Lex.g:1:53: WRITE
+                // Lex.g:1:53: WRITE
                 {
                 mWRITE(); 
 
                 }
                 break;
             case 11 :
-                // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Lex.g:1:59: WRITELN
+                // Lex.g:1:59: WRITELN
                 {
                 mWRITELN(); 
 
                 }
                 break;
             case 12 :
-                // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Lex.g:1:67: SEMICOLON
+                // Lex.g:1:67: SEMICOLON
                 {
                 mSEMICOLON(); 
 
                 }
                 break;
             case 13 :
-                // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Lex.g:1:77: OPENPAREN
+                // Lex.g:1:77: OPENPAREN
                 {
                 mOPENPAREN(); 
 
                 }
                 break;
             case 14 :
-                // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Lex.g:1:87: CLOSEPAREN
+                // Lex.g:1:87: CLOSEPAREN
                 {
                 mCLOSEPAREN(); 
 
                 }
                 break;
             case 15 :
-                // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Lex.g:1:98: INTNUM
+                // Lex.g:1:98: INTNUM
                 {
                 mINTNUM(); 
 
                 }
                 break;
             case 16 :
-                // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Lex.g:1:105: STRING
+                // Lex.g:1:105: STRING
                 {
                 mSTRING(); 
 
                 }
                 break;
             case 17 :
-                // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Lex.g:1:112: COMMENT
+                // Lex.g:1:112: COMMENT
                 {
                 mCOMMENT(); 
 
                 }
                 break;
             case 18 :
-                // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Lex.g:1:120: WS
+                // Lex.g:1:120: WS
                 {
                 mWS(); 
 
                 }
                 break;
             case 19 :
-                // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Lex.g:1:123: ID
+                // Lex.g:1:123: ID
                 {
                 mID(); 
 
                 }
                 break;
             case 20 :
-                // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Lex.g:1:126: MULT
+                // Lex.g:1:126: MULT
                 {
                 mMULT(); 
 
                 }
                 break;
             case 21 :
-                // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Lex.g:1:131: MINUS
+                // Lex.g:1:131: MINUS
                 {
                 mMINUS(); 
 
                 }
                 break;
             case 22 :
-                // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Lex.g:1:137: PLUS
+                // Lex.g:1:137: PLUS
                 {
                 mPLUS(); 
 
                 }
                 break;
             case 23 :
-                // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Lex.g:1:142: ASSIGN
+                // Lex.g:1:142: ASSIGN
                 {
                 mASSIGN(); 
 
                 }
                 break;
             case 24 :
-                // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Lex.g:1:149: EQ
+                // Lex.g:1:149: EQ
                 {
                 mEQ(); 
 
                 }
                 break;
             case 25 :
-                // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Lex.g:1:152: LEQ
+                // Lex.g:1:152: LEQ
                 {
                 mLEQ(); 
 
                 }
                 break;
             case 26 :
-                // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Lex.g:1:156: AND
+                // Lex.g:1:156: AND
                 {
                 mAND(); 
 
                 }
                 break;
             case 27 :
-                // /home/matt/Documents/uni/langeng/workspace/antlr_compiler/src/Lex.g:1:160: NOT
+                // Lex.g:1:160: NOT
                 {
                 mNOT(); 
 
