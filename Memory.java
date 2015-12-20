@@ -3,14 +3,16 @@
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.ArrayDeque;
 import java.io.*;
 
 public class Memory {
 
   static ArrayList<Byte> memory = new ArrayList<Byte>();
   static HashMap<String, Integer> variables = new HashMap<String, Integer>();
-  static int registers = 1;
-  
+  static int reg_count = 1;
+  static ArrayDeque<String> used_registers = new ArrayDeque<String>();
+
   static public int allocateString(String text)
   {
     int addr = memory.size();
@@ -23,29 +25,41 @@ public class Memory {
   }
 
   static public int allocateVar(String text) {
-	  int result;
-	  if(variables.containsKey(text)) {
-		  result = variables.get(text);
-	  }
-	  else {
-		  while (memory.size()%4 != 0) {
-			  memory.add(new Byte("",0));
-		  }
-		  result = memory.size();
-		  variables.put(text, result);
-		  for (int i=0; i<4; i++)
-			  memory.add(new Byte(text, 0));
-		  
-	  }
-	  return result;
+    int result;
+    if(variables.containsKey(text)) {
+      result = variables.get(text);
+    }
+    else {
+      while (memory.size()%4 != 0) {
+        memory.add(new Byte("",0));
+      }
+      result = memory.size();
+      variables.put(text, result);
+      for (int i=0; i<4; i++)
+        memory.add(new Byte(text, 0));
+
+    }
+    return result;
   }
-  
+
   static public String getRegister() {
-	  String result = "R"+registers;
-	  registers++;
-	  return result;
+    String result;
+    if (used_registers.isEmpty()) {
+        result = "R"+reg_count;
+        reg_count++;
+    }
+    else {
+        result = used_registers.poll();
+        // System.out.println(result);
+    }
+    return result;
   }
-  
+
+  static public void freeRegister(String free_reg) {
+      System.out.println("Inserting: " + free_reg);
+      used_registers.add(free_reg);
+  }
+
   static public void dumpData(PrintStream o)
   {
     Byte b;

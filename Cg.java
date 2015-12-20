@@ -29,17 +29,20 @@ public class Cg
     else if (irt.getOp().equals("WR")) {
       String e = expression(irt.getSub(0), o);
       emit(o, "WR "+e);
+      Memory.freeRegister(e);
     }
     else if (irt.getOp().equals("MOVE")) {
     	String loc = irt.getSub(0).getSub(0).getSub(0).getOp();
     	String reg = expression(irt.getSub(1), o);
     	emit(o, "STORE "+reg+",R0,"+loc);
+        Memory.freeRegister(reg);
     }
     else if (irt.getOp().equals("READ")) {
     	String loc = irt.getSub(0).getSub(0).getSub(0).getOp();
     	String reg = Memory.getRegister();
     	emit(o, "RD "+reg);
     	emit(o, "STORE "+reg+",R0,"+loc);
+        Memory.freeRegister(reg);
     }
     else if (irt.getOp().equals("CJUMP")) {
     	String op = irt.getSub(0).getOp();
@@ -48,7 +51,7 @@ public class Cg
     	String left = expression(irt.getSub(1), o);
     	String right = expression(irt.getSub(2), o);
     	String reg = Memory.getRegister();
-    	
+
     	if (op.equals("<=")) {
     		emit(o, "SUB "+reg+","+right+","+left);
     		emit(o, "BLTZ "+reg+","+elseLabel);
@@ -59,6 +62,9 @@ public class Cg
     		emit(o, "BNEZ "+reg+","+elseLabel);
     		emit(o, "JMP "+thenLabel);
     	}
+        Memory.freeRegister(reg);
+        Memory.freeRegister(left);
+        Memory.freeRegister(right);
     }
     else if (irt.getOp().equals("JUMP")) {
     	String lbl = irt.getSub(0).getSub(0).getOp();
@@ -98,7 +104,7 @@ public class Cg
     	String op;
     	if (t.equals("+")) {
     		op = "ADD ";
-    	} 
+    	}
     	else if (t.equals("-")) {
     		op = "SUB ";
     	}
@@ -107,6 +113,9 @@ public class Cg
     	}
         result = Memory.getRegister();
         emit(o, op+result+","+Ra+","+Rb);
+        // System.out.println("Ra Rb");
+        Memory.freeRegister(Ra);
+        Memory.freeRegister(Rb);
     }
     else {
         error(irt.getOp());
