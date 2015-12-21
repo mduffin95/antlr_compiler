@@ -10,43 +10,42 @@ public class Irt {
 	// The code below is generated automatically from the ".tokens" file of the
 	// ANTLR syntax analysis, using the TokenConv program.
 	//
-	// CAMLE TOKENS BEGIN
-	public static final String[] tokenNames = new String[] { "NONE", "NONE",
-			"NONE", "NONE", "DO", "ELSE", "FALSE", "IF", "READ", "SKIP",
-			"THEN", "TRUE", "WHILE", "WRITE", "WRITELN", "SEMICOLON",
-			"OPENPAREN", "CLOSEPAREN", "INTNUM", "STRING", "COMMENT", "WS",
-			"LETTER", "DIGIT", "ID", "MULT", "MINUS", "PLUS", "ASSIGN", "EQ",
-			"LEQ", "AND", "NOT" };
-	public static final int CLOSEPAREN = 17;
-	public static final int WHILE = 12;
-	public static final int LETTER = 22;
-	public static final int ELSE = 5;
-	public static final int DO = 4;
-	public static final int SEMICOLON = 15;
-	public static final int NOT = 32;
-	public static final int MINUS = 26;
-	public static final int MULT = 25;
-	public static final int AND = 31;
-	public static final int ID = 24;
-	public static final int TRUE = 11;
-	public static final int WRITE = 13;
-	public static final int IF = 7;
-	public static final int INTNUM = 18;
-	public static final int SKIP = 9;
-	public static final int WS = 21;
-	public static final int THEN = 10;
-	public static final int WRITELN = 14;
-	public static final int READ = 8;
-	public static final int ASSIGN = 28;
-	public static final int PLUS = 27;
-	public static final int DIGIT = 23;
-	public static final int OPENPAREN = 16;
-	public static final int EQ = 29;
-	public static final int COMMENT = 20;
-	public static final int FALSE = 6;
-	public static final int STRING = 19;
-	public static final int LEQ = 30;
-	// CAMLE TOKENS END
+// CAMLE TOKENS BEGIN
+  public static final String[] tokenNames = new String[] {
+"NONE", "NONE", "NONE", "NONE", "DO", "ELSE", "FALSE", "IF", "READ", "SKIP", "THEN", "TRUE", "WHILE", "WRITE", "WRITELN", "SEMICOLON", "OPENPAREN", "CLOSEPAREN", "INTNUM", "STRING", "COMMENT", "WS", "LETTER", "DIGIT", "ALPHANUM", "ID", "MULT", "MINUS", "PLUS", "DIV", "MOD", "ASSIGN", "EQ", "LEQ", "AND", "NOT"};
+  public static final int CLOSEPAREN=17;
+  public static final int WHILE=12;
+  public static final int MOD=30;
+  public static final int LETTER=22;
+  public static final int ELSE=5;
+  public static final int DO=4;
+  public static final int SEMICOLON=15;
+  public static final int NOT=35;
+  public static final int MINUS=27;
+  public static final int MULT=26;
+  public static final int AND=34;
+  public static final int ID=25;
+  public static final int TRUE=11;
+  public static final int WRITE=13;
+  public static final int ALPHANUM=24;
+  public static final int IF=7;
+  public static final int INTNUM=18;
+  public static final int SKIP=9;
+  public static final int WS=21;
+  public static final int THEN=10;
+  public static final int WRITELN=14;
+  public static final int READ=8;
+  public static final int ASSIGN=31;
+  public static final int PLUS=28;
+  public static final int DIGIT=23;
+  public static final int OPENPAREN=16;
+  public static final int DIV=29;
+  public static final int EQ=32;
+  public static final int COMMENT=20;
+  public static final int FALSE=6;
+  public static final int STRING=19;
+  public static final int LEQ=33;
+// CAMLE TOKENS END
 
 	static int lcount = 0;
 	static int true_loc = Memory.allocateString("true");
@@ -111,7 +110,7 @@ public class Irt {
 				irt2.addSub(new IRTree("MEM", new IRTree("CONST", new IRTree(flst))));
 				ifthenelse(irt, trans, irt1, irt2, thenLabel, elseLabel);
 				break;
-				
+
 			} else {
 				irt.setOp("WRS");
 				irt.addSub(irt1);
@@ -124,7 +123,6 @@ public class Irt {
 			break;
 		case ASSIGN:
 			irt.setOp("MOVE");
-
 			// VARIABLE
 			expression((CommonTree) ast.getChild(0), irt1);
 
@@ -148,7 +146,7 @@ public class Irt {
 			ifthenelse(irt, trans, irt1, irt2, thenLabel, elseLabel);
 			break;
 		case WHILE:
-			
+
 			irt.setOp("SEQ");
 			String beginLabel = Irt.getLabel();
 			thenLabel = Irt.getLabel();
@@ -183,21 +181,21 @@ public class Irt {
 		cj.addSub(new IRTree(n2));
 		return cj;
 	}
-	
+
 	public static void ifthenelse(IRTree root, IRTree trans, IRTree s1, IRTree s2, String n1, String n2) {
 		String end = Irt.getLabel();
 		root.setOp("SEQ");
 		root.addSub(trans);
-		root.addSub(new IRTree("SEQ", 
-						new IRTree("LABEL", new IRTree(n1)), 
-						new IRTree("SEQ", 
-								s1, 
-								new IRTree("SEQ", 
+		root.addSub(new IRTree("SEQ",
+						new IRTree("LABEL", new IRTree(n1)),
+						new IRTree("SEQ",
+								s1,
+								new IRTree("SEQ",
 										new IRTree("JUMP", new IRTree("NAME", new IRTree(end))),
-										new IRTree("SEQ", 
+										new IRTree("SEQ",
 												new IRTree("LABEL", new IRTree(n2)),
-												new IRTree("SEQ", 
-														s2, 
+												new IRTree("SEQ",
+														s2,
 														new IRTree("LABEL", new IRTree(end)))
 										)
 								)
@@ -278,17 +276,7 @@ public class Irt {
 		}
 		else {
 			irt.setOp("BINOP");
-			if (tt == MULT) {
-				expression((CommonTree) ast.getChild(0), irt1);
-				expression((CommonTree) ast.getChild(1), irt2);
-				irt.addSub(new IRTree("*"));
-			}
-			else if (tt == PLUS) {
-				expression((CommonTree) ast.getChild(0), irt1);
-				expression((CommonTree) ast.getChild(1), irt2);
-				irt.addSub(new IRTree("+"));
-			}
-			else if (tt == MINUS) {
+			if (tt == MINUS) {
 				if(ast.getChildCount() == 1) {
 					irt1.setOp("CONST");
 					irt1.addSub(new IRTree("0"));
@@ -297,11 +285,19 @@ public class Irt {
 				else {
 					expression((CommonTree) ast.getChild(0), irt1);
 					expression((CommonTree) ast.getChild(1), irt2);
-				}	
+				}
 				irt.addSub(new IRTree("-"));
 			}
+			else {
+				expression((CommonTree) ast.getChild(0), irt1);
+				expression((CommonTree) ast.getChild(1), irt2);
+				if (tt == MULT) 		irt.addSub(new IRTree("*"));
+				else if (tt == DIV) 	irt.addSub(new IRTree("/"));
+				else if (tt == MOD) 	irt.addSub(new IRTree("%"));
+				else if (tt == PLUS)	irt.addSub(new IRTree("+"));
+			}
 			irt.addSub(irt1);
-			irt.addSub(irt2);			
+			irt.addSub(irt2);
 		}
 	}
 

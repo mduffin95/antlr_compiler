@@ -2,10 +2,6 @@
 
 lexer grammar Lex;
 
-options {
-    backtrack = true;
-}
-
 @members
 {
     int charCount = 0;
@@ -48,17 +44,19 @@ LETTER       : 'a'..'z'
 fragment
 DIGIT        : '0'..'9' ;
 
-ID           : LETTER ALPHANUM?;
+ID           : LETTER ALPHANUM;
 
 fragment
 ALPHANUM
-@init {int N = 1;}
-             : ({N <= 8}?=> (LETTER | DIGIT) {N++;})*
+@init {int varLen = 1;}
+             : ({varLen < 8}?=> (LETTER | DIGIT) {varLen++;})*
              ;
 
 MULT         : '*' ;
 MINUS        : '-' ;
 PLUS         : '+' ;
+DIV          : '/' ;
+MOD          : '%' ;
 ASSIGN       : ':=' ;
 EQ           : '=' ;
 LEQ	         : '<=' ;

@@ -51,7 +51,7 @@ boolexp :
 boolterm :
       NOT^ bool
     | bool
-    ;    
+    ;
 
 bool :
       TRUE
@@ -65,9 +65,9 @@ exp :
     ;
 
 term :
-    unary ( MULT^ unary )* 
+    unary ( (MULT | DIV | MOD)^ unary )*
     ;
-    
+
 unary :
       PLUS! atom
     | MINUS^ atom

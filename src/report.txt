@@ -1,0 +1,10 @@
+Language Features:
+My compiler implements every aspect of the specified language (including limiting variable lengths to 8 characters). 
+It also includes integer division, modulo and handles negative numbers.
+Limits variable length to 8 characters
+Reduced register use
+
+Optimizations:
+I have used a queue for register allocation. When a register is no longer in used it is placed in the queue. 
+When requesting a register to use the getRegister() function first looks in the queue. If the queue is empty
+it then gets a new register. If the queue is not empty it polls the queue for a register to use.

@@ -75,7 +75,7 @@ public class Cg
     	emit(o, lbl + ":");
     }
     else if (irt.getOp().equals("SKIP")) {
-    	emit(o, "NOP");
+//    	emit(o, "NOP"); //Not necessary
     }
     else {
       error(irt.getOp());
@@ -84,16 +84,14 @@ public class Cg
 
   private static String expression(IRTree irt, PrintStream o)
   {
-    String result = "";
+    String result = Memory.getRegister();
     System.out.println(irt.getOp());
     if (irt.getOp().equals("CONST")) {
 	    String t = irt.getSub(0).getOp();
-	    result = Memory.getRegister();
 	    emit(o, "ADDI "+result+",R0,"+t);
     }
     else if (irt.getOp().equals("MEM")) {
     	String t = irt.getSub(0).getSub(0).getOp();
-        result = Memory.getRegister();
         emit(o, "LOAD "+result+",R0,"+t);
     }
     else if (irt.getOp().equals("BINOP")) {
@@ -101,21 +99,34 @@ public class Cg
     	String Ra, Rb;
     	Ra = expression(irt.getSub(1), o);
     	Rb = expression(irt.getSub(2), o);
-    	String op;
-    	if (t.equals("+")) {
-    		op = "ADD ";
-    	}
-    	else if (t.equals("-")) {
-    		op = "SUB ";
+    	if (t.equals("%")) {
+    		String tmp1 = Memory.getRegister();
+    		String tmp2 = Memory.getRegister();
+    		emit(o, "DIV "+tmp1+","+Ra+","+Rb);
+    		emit(o, "MUL "+tmp2+","+tmp1+","+Rb);
+    		emit(o, "SUB "+result+","+Ra+","+tmp2);
+    		Memory.freeRegister(tmp1);
+    		Memory.freeRegister(tmp2);
     	}
     	else {
-    		op = "MUL ";
+    		String op;
+	    	if (t.equals("+")) {
+	    		op = "ADD ";
+	    	}
+	    	else if (t.equals("-")) {
+	    		op = "SUB ";
+	    	}
+	    	else if (t.equals("*")) {
+	    		op = "MUL ";
+	    	}
+	    	else {
+	    		op = "DIV ";
+	    	}
+	        emit(o, op+result+","+Ra+","+Rb);
+	        Memory.freeRegister(Ra);
+	        Memory.freeRegister(Rb);
     	}
-        result = Memory.getRegister();
-        emit(o, op+result+","+Ra+","+Rb);
-        // System.out.println("Ra Rb");
-        Memory.freeRegister(Ra);
-        Memory.freeRegister(Rb);
+    	
     }
     else {
         error(irt.getOp());
